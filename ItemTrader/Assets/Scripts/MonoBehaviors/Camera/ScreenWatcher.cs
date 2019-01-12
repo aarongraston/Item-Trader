@@ -12,6 +12,12 @@ public class ScreenWatcher : MonoBehaviour
     private float screenWidth;
     private float screenHeight;
 
+    //Camera settings:
+    //holds 3 different variables for zoom amount, shift amount, and percent of screen travelled before shift.
+
+    [SerializeField]
+    private CameraVariables camVariables;
+
     //public variables
     public GameObject player;
     public float camMoveSpeed = 1f;
@@ -27,14 +33,14 @@ public class ScreenWatcher : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         playerTransform = player.transform;
         Detector = theCam.WorldToViewportPoint(playerTransform.position);
-
+        
         if (!camMoving)
         {
-            if (Detector.x <= 0)
+            if (Detector.x <= 0.2f)
             {
 
                 camMoving = true;

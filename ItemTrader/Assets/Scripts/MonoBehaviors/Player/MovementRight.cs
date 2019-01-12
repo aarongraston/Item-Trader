@@ -15,7 +15,7 @@ public class MovementRight : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         move = Vector3.zero;
         move = new Vector3(-moveAmount, 0, 0);
