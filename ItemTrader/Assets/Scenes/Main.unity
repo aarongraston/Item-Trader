@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 190787755}
-  camMoveSpeed: 3
+  camMoveSpeed: 1
 --- !u!1 &737203408
 GameObject:
   m_ObjectHideFlags: 0

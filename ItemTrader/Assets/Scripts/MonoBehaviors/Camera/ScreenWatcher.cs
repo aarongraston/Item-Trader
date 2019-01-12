@@ -22,8 +22,8 @@ public class ScreenWatcher : MonoBehaviour
     {
         theCam = gameObject.GetComponent<Camera>();
         camMoving = false;
-        screenWidth = theCam.pixelWidth;
-        screenHeight = theCam.pixelHeight;
+        screenWidth = 17.8f;
+        screenHeight = 0.0f;
     }
 
     // Update is called once per frame
@@ -32,10 +32,11 @@ public class ScreenWatcher : MonoBehaviour
         playerTransform = player.transform;
         Detector = theCam.WorldToViewportPoint(playerTransform.position);
 
-        while (!camMoving)
+        if (!camMoving)
         {
             if (Detector.x <= 0)
             {
+
                 camMoving = true;
                 StartCoroutine("moveLeft");
                 return;
@@ -46,18 +47,21 @@ public class ScreenWatcher : MonoBehaviour
 
     }
 
-    public IEnumerator moveLeft() {
+    public IEnumerator moveLeft()
+    {
 
         float amountLeft = screenWidth;
 
-        while (amountLeft > 0) {
+        while (amountLeft > 0)
+        {
             amountLeft -= camMoveSpeed;
             this.transform.position += new Vector3(-camMoveSpeed, 0, 0);
+            yield return null;
         }
 
         amountLeft = screenWidth;
         camMoving = false;
 
-        yield return null;
-    } 
+
+    }
 }
