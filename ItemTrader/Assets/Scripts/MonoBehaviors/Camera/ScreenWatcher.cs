@@ -45,7 +45,7 @@ public class ScreenWatcher : MonoBehaviour
             {
                 //set the flag for camera movement so it finishes moving before potentially being called to move again.
                 camMoving = true;
-                StartCoroutine("moveLeft");
+                StartCoroutine(move(camVariables.camShiftAmount.x, new Vector3(-camVariables.camMoveSpeed, 0, 0)));
                 return;
             }
 
@@ -53,7 +53,7 @@ public class ScreenWatcher : MonoBehaviour
             if (Detector.x >= (1 - camVariables.percentScreenShift))
             {
                 camMoving = true;
-                StartCoroutine("moveRight");
+                StartCoroutine(move(camVariables.camShiftAmount.x, new Vector3(camVariables.camMoveSpeed, 0, 0)));
                 return;
             }
 
@@ -61,7 +61,7 @@ public class ScreenWatcher : MonoBehaviour
             if (Detector.y <= camVariables.percentScreenShift)
             {
                 camMoving = true;
-                StartCoroutine("moveDown");
+                StartCoroutine(move(camVariables.camShiftAmount.z, new Vector3(0, 0, -camVariables.camMoveSpeed)));
                 return;
             }
 
@@ -69,7 +69,7 @@ public class ScreenWatcher : MonoBehaviour
             if (Detector.y >= (1 - camVariables.percentScreenShift))
             {
                 camMoving = true;
-                StartCoroutine("moveUp");
+                StartCoroutine(move(camVariables.camShiftAmount.z, new Vector3(0, 0, camVariables.camMoveSpeed)));
                 return;
             }
         }
@@ -78,66 +78,19 @@ public class ScreenWatcher : MonoBehaviour
 
     }
 
-    //the code executed to move camera left
-    public IEnumerator moveLeft()
+    public IEnumerator move(float shiftAmount, Vector3 moveMent)
     {
-
-        float amountLeft = camVariables.camShiftAmount.x;
+        float amountLeft = shiftAmount;
 
         while (amountLeft > 0)
         {
             amountLeft -= camVariables.camMoveSpeed;
-            this.transform.position += new Vector3(-camVariables.camMoveSpeed, 0, 0);
+            this.transform.Translate(moveMent, Space.World);
             yield return null;
         }
 
         camMoving = false;
+        
     }
 
-    //code executed to move camera right 
-    public IEnumerator moveRight()
-    {
-        float amountLeft = camVariables.camShiftAmount.x;
-
-            while (amountLeft > 0)
-        {
-            amountLeft -= camVariables.camMoveSpeed;
-            this.transform.position += new Vector3(camVariables.camMoveSpeed, 0, 0);
-            yield return null;
-        }
-
-
-        camMoving = false;
-    }
-
-    //code executed to move camera down 
-    public IEnumerator moveDown()
-    {
-        float amountLeft = camVariables.camShiftAmount.z;
-
-        while (amountLeft > 0)
-        {
-            amountLeft -= camVariables.camMoveSpeed;
-            this.transform.Translate( new Vector3(0, 0, -camVariables.camMoveSpeed), Space.World);
-            yield return null; 
-        }
-
-        camMoving = false;
-
-    }
-
-    public IEnumerator moveUp()
-    {
-        float amountLeft = camVariables.camShiftAmount.z;
-
-        while (amountLeft > 0)
-        {
-            amountLeft -= camVariables.camShiftAmount.z;
-            this.transform.Translate(new Vector3(0, 0, camVariables.camMoveSpeed), Space.World);
-            yield return null; 
-        }
-
-        camMoving = false;
-
-    }
 }
