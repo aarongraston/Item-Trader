@@ -18,7 +18,7 @@ public class MovementRight : MonoBehaviour
     void FixedUpdate()
     {
         move = Vector3.zero;
-        move = new Vector3(-moveAmount, 0, 0);
+        move = new Vector3(0, 0, -moveAmount);
         this.transform.position += move;   
     }
 }
