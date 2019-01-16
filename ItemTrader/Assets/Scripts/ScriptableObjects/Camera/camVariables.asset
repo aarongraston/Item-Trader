@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ec5451bb3891c4eb8bfb4abf7984a8, type: 3}
   m_Name: camVariables
   m_EditorClassIdentifier: 
-  percentScreenShift: 0.3
-  camZoomAmount: 16
+  percentScreenShift: 0.2
+  camZoomAmount: 13
   camShiftAmount: {x: 17.8, y: 0, z: 17.8}
   camMoveSpeed: 2
