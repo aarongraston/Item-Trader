@@ -15,4 +15,4 @@ MonoBehaviour:
   percentScreenShift: 0.2
   camZoomAmount: 13
   camShiftAmount: {x: 17.8, y: 0, z: 17.8}
-  camMoveSpeed: 2
+  camMoveSpeed: 1.06
