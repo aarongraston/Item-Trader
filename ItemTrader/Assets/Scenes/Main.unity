@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0b64b283558c748aaeefa4c0418664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: {fileID: 0}
+  currentState: {fileID: 11400000, guid: 7e2478b4d205c904c959c3fef276b35e, type: 2}
   charController: {fileID: 0}
 --- !u!23 &190787757
 MeshRenderer:

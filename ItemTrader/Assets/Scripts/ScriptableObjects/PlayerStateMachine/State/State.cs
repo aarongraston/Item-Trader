@@ -5,12 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Player State/State")]
 public class State : ScriptableObject
 {
-    //this will be set in the inspector
+    //the specifics on which update function and which actions on command are set in the inspector per State! :D very pluggable.
+    public StateUpdateMethod stateUpdate;
     public InputAction[] inputActions; 
 
         public void UpdateState(PlayerStateController controller)
     {
-
+        stateUpdate.UpdateState(controller);
     }
 
     public void DoAction(PlayerStateController controller, PlayerStateController.ButtonPressed bPressed)

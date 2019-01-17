@@ -15,6 +15,9 @@ public class JumpAction : InputAction
     private void Jump(PlayerStateController controller)
     {
 
+        CharacterController charController = controller.charController; 
+
+
     }
 
 }
