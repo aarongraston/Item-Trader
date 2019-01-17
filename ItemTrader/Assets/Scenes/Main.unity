@@ -215,6 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: 7e2478b4d205c904c959c3fef276b35e, type: 2}
   charController: {fileID: 0}
+  variables: {fileID: 11400000, guid: f4a13128e99638c4ca46082bdcd4a3ed, type: 2}
 --- !u!23 &190787757
 MeshRenderer:
   m_ObjectHideFlags: 0

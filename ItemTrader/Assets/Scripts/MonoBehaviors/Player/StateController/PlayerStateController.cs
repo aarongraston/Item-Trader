@@ -11,6 +11,8 @@ public class PlayerStateController : MonoBehaviour
     [HideInInspector] public CharacterController charController;
     [HideInInspector] public enum ButtonPressed { Space, E, Nothing};
 
+    public PlayerVariables variables;
+
     //private variables
     private ButtonPressed bPressed = ButtonPressed.Nothing;
 
