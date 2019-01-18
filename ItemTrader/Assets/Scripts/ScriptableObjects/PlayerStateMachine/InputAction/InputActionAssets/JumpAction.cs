@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Player State/Actions/Jump Action")]
 public class JumpAction : InputAction
 {
+    private State nextState;
 
     public override void Act(PlayerStateController controller)
     {
@@ -15,8 +16,7 @@ public class JumpAction : InputAction
     private void Jump(PlayerStateController controller)
     {
 
-        CharacterController charController = controller.charController; 
-
+        controller.currentState = nextState;
 
     }
 
