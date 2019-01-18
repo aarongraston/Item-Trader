@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerVariables : ScriptableObject
 {
     public float speed = 1f;
+    public float turnSpeed = 0.25f;
 
 
 }
