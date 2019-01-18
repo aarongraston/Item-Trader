@@ -15,4 +15,4 @@ MonoBehaviour:
   stateUpdate: {fileID: 11400000, guid: 230315f0f5a57724bb3f37682ed029d3, type: 2}
   inputActions:
   - {fileID: 11400000, guid: 68184913e32ce9c4e912483c912b906d, type: 2}
-  - {fileID: 11400000, guid: 6457a56a56665ab43b54119432d0276a, type: 2}
+  - {fileID: 0}

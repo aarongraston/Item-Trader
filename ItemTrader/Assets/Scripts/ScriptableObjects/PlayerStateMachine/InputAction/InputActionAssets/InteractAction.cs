@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Player State/Actions/Interact Action")]
-public class InteractAction : InputAction
+public class InteractAction : MonoBehaviour
 {
-    public override void Act(PlayerStateController controller)
+    // Start is called before the first frame update
+    void Start()
     {
+        
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
