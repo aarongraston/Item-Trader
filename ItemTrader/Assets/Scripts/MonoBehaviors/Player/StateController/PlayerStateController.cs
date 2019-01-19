@@ -13,6 +13,8 @@ public class PlayerStateController : MonoBehaviour
 
     public PlayerVariables variables;
 
+    public float airTime;
+
     //private variables
     private ButtonPressed bPressed = ButtonPressed.Nothing;
 
@@ -20,6 +22,7 @@ public class PlayerStateController : MonoBehaviour
     void Awake()
     {
         Init();
+        airTime = variables.timeAirStall;
 
     }
 
@@ -36,15 +39,17 @@ public class PlayerStateController : MonoBehaviour
     {
         currentState.UpdateState(this);
 
-        if (Input.GetButton("Jump")) {
+        if (Input.GetButtonDown("Jump")) {
             bPressed = ButtonPressed.Space;
             currentState.DoAction(this, bPressed);
         }
 
-        if (Input.GetButton("Interact"))
+        if (Input.GetButtonDown("Interact"))
         {
             bPressed = ButtonPressed.E;
             currentState.DoAction(this, bPressed);
         }
     }
+
+    
 }

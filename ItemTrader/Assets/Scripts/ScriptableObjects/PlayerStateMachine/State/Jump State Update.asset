@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e62b0a59106fa04b9430354e4ff4b8a, type: 3}
-  m_Name: Player Variables
+  m_Script: {fileID: 11500000, guid: 9cc85c3648011544db80a77ae95c8d16, type: 3}
+  m_Name: Jump State Update
   m_EditorClassIdentifier: 
-  speed: 8
-  turnSpeed: 0.6
-  jumpSpeed: 0.9
-  gravity: 3.5
-  timeAirStall: 0.12
-  movementInAirPercentage: 0.5
+  groundedState: {fileID: 11400000, guid: 7e2478b4d205c904c959c3fef276b35e, type: 2}

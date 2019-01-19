@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814334584708af247a360dc1bc01a0f5, type: 3}
   m_Name: Jump
   m_EditorClassIdentifier: 
+  nextState: {fileID: 11400000, guid: 0ef678fd9bb44d44c903bb1c9c10f44e, type: 2}
