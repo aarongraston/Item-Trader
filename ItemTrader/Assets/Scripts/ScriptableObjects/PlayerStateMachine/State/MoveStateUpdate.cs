@@ -11,9 +11,9 @@ public class MoveStateUpdate : StateUpdateMethod
     //here is where the code for player movement goes:
     public override void UpdateState(PlayerStateController controller)
     {
-            
-            Vector3 movementKeys = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-            movementKeys = movementKeys.normalized;
+
+        Vector3 movementKeys = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        movementKeys = movementKeys.normalized;
         movementKeys = movementKeys * Time.deltaTime * controller.variables.speed;
 
         movement.x = movementKeys.x;
@@ -29,10 +29,10 @@ public class MoveStateUpdate : StateUpdateMethod
             gravityAmount = controller.variables.gravity;
             movement.y -= gravityAmount * Time.deltaTime;
         }
-        
+
         controller.charController.Move(movement);
 
-        if (movement != Vector3.zero)
+        if (movement.x != 0 || movement.z != 0)
         controller.transform.rotation = Quaternion.Slerp(controller.transform.rotation, Quaternion.LookRotation(movementKeys), controller.variables.turnSpeed);
     }
 }
