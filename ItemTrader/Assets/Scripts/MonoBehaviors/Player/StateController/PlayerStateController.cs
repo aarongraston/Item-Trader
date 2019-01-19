@@ -36,6 +36,7 @@ public class PlayerStateController : MonoBehaviour
 
     private void Update()
     {
+
         if (Input.GetButtonDown("Jump"))
         {
             bPressed = ButtonPressed.Space;
@@ -47,15 +48,18 @@ public class PlayerStateController : MonoBehaviour
             bPressed = ButtonPressed.E;
             currentState.DoAction(this, bPressed);
         }
+
+        
+
+        
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    public void FixedUpdate()
     {
-        currentState.UpdateState(this);
+        
 
-       
+        currentState.UpdateState(this);
     }
 
-    
+
 }

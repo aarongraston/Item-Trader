@@ -9,7 +9,9 @@ public class JumpAction : InputAction
 
     public override void Act(PlayerStateController controller)
     {
-        Jump(controller);
+
+            Debug.Log("Called Jump()");
+            Jump(controller);
     }
 
     //here is the function to make the guy jump.
