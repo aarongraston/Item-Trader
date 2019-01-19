@@ -20,8 +20,8 @@ public class MoveStateUpdate : StateUpdateMethod
 
         if (controller.charController.isGrounded)
         {
-            gravityAmount = 0.01f;
-            movement.y = 0;
+            gravityAmount = 0.1f;
+            movement.y = -0.01f;
         }
         else
         {
