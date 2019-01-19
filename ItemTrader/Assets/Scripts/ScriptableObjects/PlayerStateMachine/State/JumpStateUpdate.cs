@@ -10,8 +10,7 @@ public class JumpStateUpdate : StateUpdateMethod
 
     public override void UpdateState(PlayerStateController controller)
     {
-        Debug.Log(movement);
-        Debug.Log(controller.charController.isGrounded);
+     
         if (controller.charController.isGrounded)
         {
             movement = new Vector3(0, controller.variables.jumpSpeed, 0);

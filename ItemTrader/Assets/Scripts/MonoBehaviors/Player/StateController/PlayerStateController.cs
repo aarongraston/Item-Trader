@@ -34,12 +34,10 @@ public class PlayerStateController : MonoBehaviour
         currentState = (State)AssetDatabase.LoadAssetAtPath("Assets/Scripts/ScriptableObjects/PlayerStateMachine/State/PlayerMoveState.asset", typeof(State));
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
-        currentState.UpdateState(this);
-
-        if (Input.GetButtonDown("Jump")) {
+        if (Input.GetButtonDown("Jump"))
+        {
             bPressed = ButtonPressed.Space;
             currentState.DoAction(this, bPressed);
         }
@@ -49,6 +47,14 @@ public class PlayerStateController : MonoBehaviour
             bPressed = ButtonPressed.E;
             currentState.DoAction(this, bPressed);
         }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        currentState.UpdateState(this);
+
+       
     }
 
     
