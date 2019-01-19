@@ -16,5 +16,5 @@ MonoBehaviour:
   turnSpeed: 0.6
   jumpSpeed: 0.9
   gravity: 3.5
-  timeAirStall: 0.12
-  movementInAirPercentage: 0.5
+  timeAirStall: 0.1
+  movementInAirPercentage: 0.7

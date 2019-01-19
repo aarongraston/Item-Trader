@@ -9,6 +9,7 @@ public class ScreenWatcher : MonoBehaviour
     private Vector3 Detector = Vector3.zero;
     private Transform playerTransform;
     private bool camMoving;
+    private float camYPos;
 
     //Camera settings:
     //holds 3 different variables for zoom amount, shift amount, and percent of screen travelled before shift.
@@ -26,6 +27,8 @@ public class ScreenWatcher : MonoBehaviour
         theCam = gameObject.GetComponent<Camera>();
         theCam.orthographicSize = camVariables.camZoomAmount;
         camMoving = false;
+        camYPos = transform.position.y;
+        
     }
 
     // Update is called once per frame
@@ -35,6 +38,10 @@ public class ScreenWatcher : MonoBehaviour
         
         //a two dimensional vector for tracking the percentage of the player's positon across the screen width and height
         Detector = theCam.WorldToViewportPoint(playerTransform.position);
+
+        float playerYPos = playerTransform.position.y;
+
+        transform.position = new Vector3(transform.position.x, playerYPos + camYPos, transform.position.z);
         
         if (!camMoving)
         {
