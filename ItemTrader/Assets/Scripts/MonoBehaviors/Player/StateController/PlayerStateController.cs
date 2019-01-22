@@ -12,6 +12,7 @@ public class PlayerStateController : MonoBehaviour
     [HideInInspector] public enum ButtonPressed { Space, E, Nothing};
 
     public PlayerVariables variables;
+    public GameObject boat; 
 
     public float airTime;
 
@@ -45,20 +46,29 @@ public class PlayerStateController : MonoBehaviour
 
         if (Input.GetButtonDown("Interact"))
         {
-            bPressed = ButtonPressed.E;
+            if (currentState == AssetDatabase.LoadAssetAtPath("Assets/Scripts/ScriptableObjects/PlayerStateMachine/State/PlayerMoveState.asset", typeof(ScriptableObject)))
+            {
+                bPressed = ButtonPressed.E;
+                currentState.DoAction(this, bPressed, boat);
+                return;
+            }
+            
             currentState.DoAction(this, bPressed);
         }
-
-        
-
         
     }
 
     public void FixedUpdate()
     {
-        
-
         currentState.UpdateState(this);
+    }
+
+    public void StandingOn(out RaycastHit returnHit)
+    {
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out returnHit, 5f))
+        {
+            return;
+        }
     }
 
 

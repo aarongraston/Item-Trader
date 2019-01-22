@@ -10,9 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6bc8c036c8efd84ba7f60590f434a96, type: 3}
-  m_Name: PlayerMoveState
+  m_Name: PlayerBoatState
   m_EditorClassIdentifier: 
-  stateUpdate: {fileID: 11400000, guid: 230315f0f5a57724bb3f37682ed029d3, type: 2}
-  inputActions:
-  - {fileID: 11400000, guid: 68184913e32ce9c4e912483c912b906d, type: 2}
-  - {fileID: 11400000, guid: 447058ebf9a630a4faa02131d457953f, type: 2}
+  stateUpdate: {fileID: 11400000, guid: 1df4ec549f721b841afb88fbab755b64, type: 2}
+  inputActions: []

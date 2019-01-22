@@ -5,4 +5,5 @@ using UnityEngine;
 public abstract class InputAction : ScriptableObject
 {
     public abstract void Act(PlayerStateController controller);
+    public abstract void Act(PlayerStateController controller, GameObject boat);
 }

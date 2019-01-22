@@ -2,17 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractAction : MonoBehaviour
+[CreateAssetMenu(menuName = "Player State/Actions/Interact")]
+public class InteractAction : InputAction
 {
-    // Start is called before the first frame update
-    void Start()
+    public State nextState;
+
+    public override void Act(PlayerStateController controller)
     {
-        
+        return;      
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Act(PlayerStateController controller, GameObject boat)
     {
-        
+        boatCall(controller, boat);
+
     }
+
+    public void boatCall(PlayerStateController controller, GameObject boat)
+    {
+        RaycastHit hit;
+        controller.StandingOn(out hit);
+        controller.currentState = nextState;
+
+        if (hit.transform.gameObject == GameObject.FindWithTag("dock"))
+        {
+            boat.GetComponent<CheckandLoadPlayer>().LoadPlayer();
+        }
+
+    }
+
+
 }

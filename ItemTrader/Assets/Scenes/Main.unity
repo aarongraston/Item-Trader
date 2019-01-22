@@ -270,7 +270,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &190787755
 GameObject:
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 190787756}
   m_Layer: 0
   m_Name: MainDude
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -307,6 +307,7 @@ MonoBehaviour:
   currentState: {fileID: 11400000, guid: 7e2478b4d205c904c959c3fef276b35e, type: 2}
   charController: {fileID: 0}
   variables: {fileID: 11400000, guid: f4a13128e99638c4ca46082bdcd4a3ed, type: 2}
+  boat: {fileID: 1997323663}
   airTime: 0
 --- !u!23 &190787757
 MeshRenderer:
@@ -366,7 +367,7 @@ Transform:
   m_Children:
   - {fileID: 443369237}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &190787760
 CharacterController:
@@ -649,7 +650,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!114 &534669906
 MonoBehaviour:
@@ -665,6 +666,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camVariables: {fileID: 11400000, guid: 77470edb1959f6e4b9c1742003ee0877, type: 2}
   player: {fileID: 190787755}
+--- !u!1 &588295555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 588295556}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &588295556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588295555}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.3598895, y: 38.5, z: 7.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &633232737
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,7 +1007,7 @@ RectTransform:
   m_Children:
   - {fileID: 737203409}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1016,7 +1047,7 @@ Transform:
   - {fileID: 1577729166}
   - {fileID: 1249443345}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1189022045
 GameObject:
@@ -1325,7 +1356,7 @@ GameObject:
   - component: {fileID: 1550908695}
   m_Layer: 0
   m_Name: Dock
-  m_TagString: Untagged
+  m_TagString: dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1400,7 +1431,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1577729165
 GameObject:
@@ -1658,6 +1689,8 @@ GameObject:
   - component: {fileID: 1997323665}
   - component: {fileID: 1997323664}
   - component: {fileID: 1997323668}
+  - component: {fileID: 1997323670}
+  - component: {fileID: 1997323669}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Untagged
@@ -1736,7 +1769,7 @@ Transform:
   m_Children:
   - {fileID: 1868268322}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1997323668
 MonoBehaviour:
@@ -1753,6 +1786,31 @@ MonoBehaviour:
   floatStrength: 1
   speed: 2
   heightMod: 0.25
+--- !u!135 &1997323669
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997323663}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.7
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1997323670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997323663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3360daad22e546b4a949637a6beefc0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2025374883
 GameObject:
   m_ObjectHideFlags: 0

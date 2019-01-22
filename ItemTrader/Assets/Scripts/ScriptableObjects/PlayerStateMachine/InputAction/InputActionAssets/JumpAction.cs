@@ -11,9 +11,13 @@ public class JumpAction : InputAction
     {
         if (controller.charController.isGrounded)
         {
-            Debug.Log("Called Jump()");
             Jump(controller);
         }
+    }
+
+    public override void Act(PlayerStateController controller, GameObject boat)
+    {
+        return;
     }
 
     //here is the function to make the guy jump.

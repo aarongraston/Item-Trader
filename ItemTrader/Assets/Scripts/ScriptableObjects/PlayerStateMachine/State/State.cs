@@ -25,9 +25,22 @@ public class State : ScriptableObject
         {
             inputActions[(int)bPressed].Act(controller);
         }
-
-        
     }
 
-    
+    public void DoAction(PlayerStateController controller, PlayerStateController.ButtonPressed bPressed, GameObject boat)
+    {
+        if (bPressed == PlayerStateController.ButtonPressed.E)
+        {
+            inputActions[(int)bPressed].Act(controller, boat);
+        }
+
+        if (bPressed == PlayerStateController.ButtonPressed.Space)
+        {
+            inputActions[(int)bPressed].Act(controller);
+        }
+
+
+    }
+
+
 }
