@@ -9,5 +9,6 @@ public class BoatVariables : ScriptableObject
     public float floatStrength = 0.0001f;
     public float floatSpeed = 3;
     public float heightMod = 0.25f;
+    public float turnSpeed = 2f;
 
 }

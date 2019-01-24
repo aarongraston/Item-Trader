@@ -6,7 +6,8 @@ public class CheckandLoadPlayer : MonoBehaviour
 {
     private SphereCollider boatCollider;
     private GameObject player;
-    private bool playerIsInTrigger = false;
+    public bool playerIsInTrigger = false;
+    public bool boatIsNearDock = true;
     private Transform playerPos;
 
     public BoatState idleState;
@@ -22,17 +23,26 @@ public class CheckandLoadPlayer : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == player.tag)
+        if (other.gameObject.CompareTag("Player"))
         {
             playerIsInTrigger = true; 
+        }
+        if (other.gameObject.CompareTag("dock"))
+        {
+            boatIsNearDock = true;
         }
     }
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.tag == player.tag)
+        if (other.gameObject.CompareTag("Player"))
         {
             playerIsInTrigger = false;
+        }
+
+        if (other.gameObject.CompareTag("dock"))
+        {
+            boatIsNearDock = false;
         }
     }
 
@@ -55,13 +65,15 @@ public class CheckandLoadPlayer : MonoBehaviour
 
     public void UnloadPlayer(GameObject dock)
     {
-        
-        playerPos = dock.transform.GetChild(0).transform;
-        player.transform.position = playerPos.position;
+        if (boatIsNearDock)
+        {
+            playerPos = dock.transform.GetChild(0).transform;
+            player.transform.position = playerPos.position;
 
-        GetComponent<BoatStateController>().ChangeState(idleState);
+            GetComponent<BoatStateController>().ChangeState(idleState);
 
-        player.GetComponent<CharacterController>().enabled = true;
+            player.GetComponent<CharacterController>().enabled = true;
+        }
 
 
     }

@@ -16,13 +16,15 @@ public class InteractAction : InputAction
 
     public override void Act(PlayerStateController controller, GameObject boat)
     {
-        if (controller.currentState == AssetDatabase.LoadAssetAtPath("Assets/Scripts/ScriptableObjects/PlayerStateMachine/State/PlayerMoveState.asset", typeof(ScriptableObject)))
+        if (controller.currentState == AssetDatabase.LoadAssetAtPath("Assets/Scripts/ScriptableObjects/PlayerStateMachine/State/PlayerMoveState.asset", typeof(ScriptableObject)) &&
+            boat.GetComponent<CheckandLoadPlayer>().playerIsInTrigger)
         {
             boatCall(controller, boat);
             return;
         }
 
-        if (controller.currentState == AssetDatabase.LoadAssetAtPath("Assets/Scripts/ScriptableObjects/PlayerStateMachine/State/PlayerBoatState.asset", typeof(ScriptableObject)))
+        if (controller.currentState == AssetDatabase.LoadAssetAtPath("Assets/Scripts/ScriptableObjects/PlayerStateMachine/State/PlayerBoatState.asset", typeof(ScriptableObject)) && 
+            boat.GetComponent<CheckandLoadPlayer>().boatIsNearDock)
         boatUncall(controller, boat);
 
     }
