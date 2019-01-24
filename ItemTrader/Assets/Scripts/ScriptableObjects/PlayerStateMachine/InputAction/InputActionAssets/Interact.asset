@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Interact
   m_EditorClassIdentifier: 
   boatState: {fileID: 11400000, guid: a0b0b33a1b6d1bd47a55532bbd17ffb0, type: 2}
+  moveState: {fileID: 11400000, guid: 7e2478b4d205c904c959c3fef276b35e, type: 2}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be22d250f2b190e41bc97fed236b71fe, type: 3}
   m_Name: Boat Variables
   m_EditorClassIdentifier: 
-  speed: 3.75
-  floatStrength: 0.06
-  floatSpeed: 0.08
+  speed: 4.54
+  floatStrength: 0.02
+  floatSpeed: 7.01
   heightMod: 0.18

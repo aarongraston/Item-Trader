@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: PlayerBoatState
   m_EditorClassIdentifier: 
   stateUpdate: {fileID: 11400000, guid: 1df4ec549f721b841afb88fbab755b64, type: 2}
-  inputActions: []
+  inputActions:
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 447058ebf9a630a4faa02131d457953f, type: 2}
