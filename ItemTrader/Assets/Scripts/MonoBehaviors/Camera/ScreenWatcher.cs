@@ -10,6 +10,7 @@ public class ScreenWatcher : MonoBehaviour
     private Transform playerTransform;
     private bool camMoving;
     private float camYPos;
+    private float yVelocity = 0.0f;
 
     //Camera settings:
     //holds 3 different variables for zoom amount, shift amount, and percent of screen travelled before shift.
@@ -41,7 +42,7 @@ public class ScreenWatcher : MonoBehaviour
 
         float playerYPos = playerTransform.position.y;
 
-        transform.position = new Vector3(transform.position.x, playerYPos + camYPos, transform.position.z);
+        transform.position = new Vector3(transform.position.x, Mathf.SmoothDamp(transform.position.y, playerYPos + camYPos, ref yVelocity, camVariables.smoothTime), transform.position.z);
         
         if (!camMoving)
         {

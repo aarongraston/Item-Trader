@@ -9,4 +9,5 @@ public class CameraVariables : ScriptableObject
     public float camZoomAmount = 15f;
     public Vector3 camShiftAmount = new Vector3(17.8f, 0, 13f);
     public float camMoveSpeed = 3f;
+    public float smoothTime = 0.05f;
 }
