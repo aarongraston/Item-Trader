@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Player State/Actions/Interact")]
 public class InteractAction : InputAction
 {
-    public State nextState;
+    public State boatState;
+    public State moveState;
 
     public override void Act(PlayerStateController controller)
     {
@@ -14,7 +16,14 @@ public class InteractAction : InputAction
 
     public override void Act(PlayerStateController controller, GameObject boat)
     {
-        boatCall(controller, boat);
+        if (controller.currentState == AssetDatabase.LoadAssetAtPath("Assets/Scripts/ScriptableObjects/PlayerStateMachine/State/PlayerMoveState.asset", typeof(ScriptableObject)))
+        {
+            boatCall(controller, boat);
+            return;
+        }
+
+        if (controller.currentState == AssetDatabase.LoadAssetAtPath("Assets/Scripts/ScriptableObjects/PlayerStateMachine/State/PlayerBoatState.asset", typeof(ScriptableObject)))
+        boatUncall(controller, boat);
 
     }
 
@@ -22,14 +31,37 @@ public class InteractAction : InputAction
     {
         RaycastHit hit;
         controller.StandingOn(out hit);
-        controller.currentState = nextState;
+        GameObject theDock;
+        GameObject[] docks = GameObject.FindGameObjectsWithTag("dock");
 
-        if (hit.transform.gameObject == GameObject.FindWithTag("dock"))
+        theDock = controller.FindClosest(docks);
+
+        if (hit.transform.gameObject == theDock)
         {
+            controller.currentState = boatState;
             boat.GetComponent<CheckandLoadPlayer>().LoadPlayer();
         }
 
     }
+
+    public void boatUncall(PlayerStateController controller, GameObject boat)
+    {
+        RaycastHit hit;
+        controller.StandingOn(out hit);
+        GameObject theDock;
+        GameObject[] docks = GameObject.FindGameObjectsWithTag("dock");
+
+        theDock = controller.FindClosest(docks);
+
+        if (hit.transform.gameObject == GameObject.FindGameObjectWithTag("boat"))
+        {
+            boat.GetComponent<CheckandLoadPlayer>().UnloadPlayer(theDock);
+            controller.currentState = moveState;        }
+        
+
+    } 
+
+    
 
 
 }

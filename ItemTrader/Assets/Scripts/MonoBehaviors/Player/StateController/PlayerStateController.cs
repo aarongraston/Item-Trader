@@ -10,11 +10,12 @@ public class PlayerStateController : MonoBehaviour
     [HideInInspector] public State currentState;
     [HideInInspector] public CharacterController charController;
     [HideInInspector] public enum ButtonPressed { Space, E, Nothing};
+    [HideInInspector] public float airTime;
 
     public PlayerVariables variables;
     public GameObject boat; 
 
-    public float airTime;
+    
 
     //private variables
     private ButtonPressed bPressed = ButtonPressed.Nothing;
@@ -46,7 +47,8 @@ public class PlayerStateController : MonoBehaviour
 
         if (Input.GetButtonDown("Interact"))
         {
-            if (currentState == AssetDatabase.LoadAssetAtPath("Assets/Scripts/ScriptableObjects/PlayerStateMachine/State/PlayerMoveState.asset", typeof(ScriptableObject)))
+            if (currentState == AssetDatabase.LoadAssetAtPath("Assets/Scripts/ScriptableObjects/PlayerStateMachine/State/PlayerMoveState.asset", typeof(ScriptableObject)) || 
+                currentState == AssetDatabase.LoadAssetAtPath("Assets/Scripts/ScriptableObjects/PlayerStateMachine/State/PlayerBoatState.asset", typeof(ScriptableObject)))
             {
                 bPressed = ButtonPressed.E;
                 currentState.DoAction(this, bPressed, boat);
@@ -63,12 +65,33 @@ public class PlayerStateController : MonoBehaviour
         currentState.UpdateState(this);
     }
 
+    //a method that returns the raycast hit of what the player is standing on
     public void StandingOn(out RaycastHit returnHit)
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out returnHit, 5f))
         {
             return;
         }
+    }
+
+    //a method that returns the closest dock to the player
+    public GameObject FindClosest(GameObject[] array)
+    {
+        GameObject closest = null;
+
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+        foreach (GameObject obj in array)
+        {
+            Vector3 diff = obj.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closest = obj;
+                distance = curDistance;
+            }
+        }
+        return closest;
     }
 
 
