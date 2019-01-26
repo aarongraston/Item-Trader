@@ -19,6 +19,8 @@ public class InteractAction : InputAction
             character.GetComponent<Character>().LookForItem(controller.item);
             controller.talkingTo = character;
             character.GetComponent<Character>().ExecuteDialogue(0);
+            DialogueManager dManager = controller.talkingTo.GetComponent<DialogueManager>();
+            dManager.EnableCanvas();
             controller.pointInDialogue++;
             controller.currentState = talkState;
         }

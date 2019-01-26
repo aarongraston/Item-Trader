@@ -60,12 +60,14 @@ public class PlayerStateController : MonoBehaviour
             
             currentState.DoAction(this, bPressed);
         }
-        
+
+        currentState.UpdateState(this);
+
     }
 
     public void FixedUpdate()
     {
-        currentState.UpdateState(this);
+        //currentState.UpdateState(this);
     }
 
     //a method that returns the raycast hit of what the player is standing on

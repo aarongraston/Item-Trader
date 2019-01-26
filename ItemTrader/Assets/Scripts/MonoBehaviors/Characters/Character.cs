@@ -11,8 +11,6 @@ public class Character : MonoBehaviour
 
     public bool LookForItem(ItemObject item)
     {
-        DialogueManager dManager = GetComponent<DialogueManager>();
-        dManager.EnableCanvas();
 
         foreach ( DialogueObject d in dialogue)
         {
