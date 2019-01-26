@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9019608, g: 0.92941177, b: 1, a: 0.5254902}
+  m_Color: {r: 0.10817906, g: 0.112432726, b: 0.122641504, a: 0.5254902}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1418,6 +1418,7 @@ MonoBehaviour:
   canvas: {fileID: 418033030}
   textBoxContainer: {fileID: 1690495485}
   variables: {fileID: 11400000, guid: 4cb7e9e7e1f7b0d46a5a555b1c88cd09, type: 2}
+  text: {fileID: 1308451397}
 --- !u!1 &737203408
 GameObject:
   m_ObjectHideFlags: 0
@@ -2096,7 +2097,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Hey. Have I ever got words for you. like I certainly have things to say.
+  m_text: Hey. Have I ever got words for you. I certainly have things to say.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2105,8 +2106,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282266417
-  m_fontColor: {r: 0.19321822, g: 0.20190111, b: 0.24528301, a: 1}
+    rgba: 4294244605
+  m_fontColor: {r: 0.99215686, g: 0.972549, b: 0.95686275, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2124,8 +2125,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 35
-  m_fontSizeBase: 35
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2133,11 +2134,11 @@ MonoBehaviour:
   m_fontStyle: 1
   m_textAlignment: 513
   m_isAlignmentEnumConverted: 1
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_characterSpacing: -0.34
+  m_wordSpacing: -8.72
+  m_lineSpacing: -4.03
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: -0.08
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
@@ -2165,12 +2166,12 @@ MonoBehaviour:
   m_margin: {x: 12, y: 12, z: 12, w: 12}
   m_textInfo:
     textComponent: {fileID: 0}
-    characterCount: 72
+    characterCount: 67
     spriteCount: 0
-    spaceCount: 14
-    wordCount: 15
+    spaceCount: 13
+    wordCount: 14
     linkCount: 0
-    lineCount: 4
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0

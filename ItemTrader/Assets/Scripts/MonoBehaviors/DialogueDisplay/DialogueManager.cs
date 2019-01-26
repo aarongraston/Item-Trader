@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
@@ -8,13 +9,9 @@ public class DialogueManager : MonoBehaviour
     public GameObject canvas;
     public GameObject textBoxContainer;
     public DialogueDisplayVariables variables;
+    public GameObject text;
 
-    private void Update()
-    {
-        DisplayOverhead();
-    }
-
-    private void DisplayOverhead()
+    public void DisplayOverhead()
     {
         Vector2 viewPortPoint = cam.WorldToViewportPoint(transform.position);
 
@@ -23,5 +20,10 @@ public class DialogueManager : MonoBehaviour
 ((viewPortPoint.y * canvas.GetComponent<RectTransform>().sizeDelta.y + variables.DialogueDisplayOffsetY) - ((canvas.GetComponent<RectTransform>().sizeDelta.y + variables.DialogueDisplayOffsetY) * 0.5f)));
 
         textBoxContainer.GetComponent<RectTransform>().anchoredPosition = WorldObject_ScreenPosition;
+    }
+
+    public void UpdateText(string updateText)
+    {
+        text.GetComponent<TextMeshProUGUI>().text = updateText;
     }
 }
