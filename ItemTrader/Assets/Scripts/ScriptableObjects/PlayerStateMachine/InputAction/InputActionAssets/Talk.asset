@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bc73cdbbd92824ea122ccf8ed1c64a, type: 3}
   m_Name: Talk
   m_EditorClassIdentifier: 
+  moveState: {fileID: 11400000, guid: 7e2478b4d205c904c959c3fef276b35e, type: 2}
   talking: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Player State/Actions/Talk")]
 public class TalkAction : InputAction
 {
+    public State moveState;
     public bool talking = false;
 
     public override void Act(PlayerStateController controller)
@@ -13,7 +14,8 @@ public class TalkAction : InputAction
         controller.pointInDialogue++;
         if (talking == false)
         {
-            controller.pointInDialogue = 1;
+            controller.pointInDialogue = 0;
+            controller.currentState = moveState;
         }
     }
 

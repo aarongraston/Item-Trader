@@ -11,7 +11,7 @@ public class PlayerStateController : MonoBehaviour
     [HideInInspector] public CharacterController charController;
     [HideInInspector] public enum ButtonPressed { Space, E, Nothing};
     [HideInInspector] public float airTime;
-    [HideInInspector] public int pointInDialogue = 1;
+    [HideInInspector] public int pointInDialogue = 0;
     [HideInInspector] public GameObject talkingTo;
 
     public ItemObject item;
