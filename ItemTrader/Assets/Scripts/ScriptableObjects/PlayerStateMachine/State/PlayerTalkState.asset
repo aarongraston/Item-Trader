@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bc8c036c8efd84ba7f60590f434a96, type: 3}
   m_Name: PlayerTalkState
   m_EditorClassIdentifier: 
-  stateUpdate: {fileID: 0}
+  stateUpdate: {fileID: 11400000, guid: a23d17c5912995c429b707efeddd8e0f, type: 2}
   inputActions:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: bf138e00c6a28094aa36741fd1204e69, type: 2}

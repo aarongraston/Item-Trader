@@ -190,10 +190,10 @@ RectTransform:
   m_Father: {fileID: 1690495486}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 225, y: -34.205}
+  m_SizeDelta: {x: 450, y: 68.41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &17969012
 MonoBehaviour:
@@ -452,7 +452,7 @@ MonoBehaviour:
   airTime: 0
   pointInDialogue: 0
   talkingTo: {fileID: 0}
-  item: {fileID: 11400000, guid: a4cb6ef68042aca468bc28b8597f102c, type: 2}
+  item: {fileID: 11400000, guid: bfd064a3d0271994b904544f7c37be25, type: 2}
   variables: {fileID: 11400000, guid: f4a13128e99638c4ca46082bdcd4a3ed, type: 2}
   boat: {fileID: 1997323663}
 --- !u!23 &190787757
@@ -714,7 +714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &418033031
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2074,10 +2074,10 @@ RectTransform:
   m_Father: {fileID: 17969011}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 225, y: -34.205}
+  m_SizeDelta: {x: 450, y: 68.41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1308451399
 MonoBehaviour:
@@ -2099,7 +2099,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Hey. Have I ever got words for you. I certainly have things to say.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2176,11 +2176,11 @@ MonoBehaviour:
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -2640,7 +2640,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -0.5}
-  m_SizeDelta: {x: 450, y: 0}
+  m_SizeDelta: {x: 450, y: 68.41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1690495487
 MonoBehaviour:
