@@ -11,7 +11,10 @@ public class PlayerStateController : MonoBehaviour
     [HideInInspector] public CharacterController charController;
     [HideInInspector] public enum ButtonPressed { Space, E, Nothing};
     [HideInInspector] public float airTime;
+    [HideInInspector] public int pointInDialogue = 1;
+    [HideInInspector] public GameObject talkingTo;
 
+    public ItemObject item;
     public PlayerVariables variables;
     public GameObject boat; 
 
@@ -47,10 +50,10 @@ public class PlayerStateController : MonoBehaviour
 
         if (Input.GetButtonDown("Interact"))
         {
-            if (currentState == AssetDatabase.LoadAssetAtPath("Assets/Scripts/ScriptableObjects/PlayerStateMachine/State/PlayerMoveState.asset", typeof(ScriptableObject)) || 
-                currentState == AssetDatabase.LoadAssetAtPath("Assets/Scripts/ScriptableObjects/PlayerStateMachine/State/PlayerBoatState.asset", typeof(ScriptableObject)))
-            {
-                bPressed = ButtonPressed.E;
+            bPressed = ButtonPressed.E;
+
+            if (boat.GetComponent<CheckandLoadPlayer>().playerIsInTrigger)
+            {      
                 currentState.DoAction(this, bPressed, boat);
                 return;
             }

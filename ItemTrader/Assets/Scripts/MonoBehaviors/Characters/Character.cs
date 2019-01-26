@@ -2,28 +2,67 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Character : MonoBehaviour
+public class Character : MonoBehaviour
 {
-
-    DialogueObject nullDialogue;
-    DialogueObject[] dialogue;
+    public bool playerInRange = false;
+    public DialogueObject nullDialogue;
+    public DialogueObject[] dialogue;
+    DialogueObject currentDialogue;
 
     public bool LookForItem(ItemObject item)
     {
+        DialogueManager dManager = GetComponent<DialogueManager>();
+        dManager.EnableCanvas();
+
         foreach ( DialogueObject d in dialogue)
         {
-            if (d.item == item)
+            //dialogue objects need a conditional object to compare the passed in item to. (this needs to be fixed)
+            if (d.conditionalItem == item)
             {
-                ExecuteDialogue(d);
+                currentDialogue = d;
                 return true;
             }
         }
+
+        currentDialogue = nullDialogue;
         return false;
+        
 
     }
 
-    private void ExecuteDialogue(DialogueObject d)
+    public bool ExecuteDialogue(int i)
     {
+        DialogueManager dManager = GetComponent<DialogueManager>();
+        if (i >= currentDialogue.Dialogue.Length)
+        {
+            dManager.DisableCanvas(); 
+            return false;
+        }
 
+        dManager.UpdateText(currentDialogue.Dialogue[i]);
+        return true;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            playerInRange = true; 
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            playerInRange = false;
+        }
+    }
+
+    public bool CheckTrigger()
+    {
+        return playerInRange; 
+    }
+
+
 }

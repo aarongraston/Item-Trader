@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ec00c644b43ff54dada74efe2dd8e11, type: 3}
-  m_Name: Peter Dialogue Null
+  m_Name: peterTestingNullDialogue
   m_EditorClassIdentifier: 
   Dialogue:
-  - Hullo.
-  - This is the flatest, most square island I've ever been on.
-  - '...but it''s peaceful here.'
-  - and look yonder! That island in the distance is but a small rectangle!
-  item: {fileID: 0}
+  - '...oh. I see you brought me a diferent object.'
+  - so strange.
+  conditionalItem: {fileID: 11400000, guid: bfd064a3d0271994b904544f7c37be25, type: 2}
+  itemToGive: {fileID: 11400000, guid: a4cb6ef68042aca468bc28b8597f102c, type: 2}

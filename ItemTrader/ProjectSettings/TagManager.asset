@@ -6,6 +6,7 @@ TagManager:
   tags:
   - dock
   - boat
+  - character
   layers:
   - Default
   - TransparentFX

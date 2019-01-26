@@ -6,5 +6,7 @@ using UnityEngine;
 public class DialogueObject : ScriptableObject
 {
     public string[] Dialogue;
-    public ItemObject item;
+    public ItemObject conditionalItem;
+    public ItemObject itemToGive;
+    
 }

@@ -8,10 +8,20 @@ public class InteractAction : InputAction
 {
     public State boatState;
     public State moveState;
+    public State talkState;
 
     public override void Act(PlayerStateController controller)
     {
-        return;      
+        GameObject[] characters = GameObject.FindGameObjectsWithTag("character");
+        GameObject character = controller.FindClosest(characters);
+        if (character.GetComponent<Character>().CheckTrigger())
+        {
+            character.GetComponent<Character>().LookForItem(controller.item);
+            controller.talkingTo = character;
+            character.GetComponent<Character>().ExecuteDialogue(0);
+            controller.pointInDialogue++;
+            controller.currentState = talkState;
+        }
     }
 
     public override void Act(PlayerStateController controller, GameObject boat)

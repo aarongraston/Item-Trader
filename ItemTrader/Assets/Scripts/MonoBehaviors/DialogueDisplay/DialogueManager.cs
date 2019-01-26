@@ -22,6 +22,16 @@ public class DialogueManager : MonoBehaviour
         textBoxContainer.GetComponent<RectTransform>().anchoredPosition = WorldObject_ScreenPosition;
     }
 
+    public void DisableCanvas()
+    {
+        canvas.gameObject.SetActive(false);
+    }
+
+    public void EnableCanvas()
+    {
+        canvas.gameObject.SetActive(true);
+    }
+
     public void UpdateText(string updateText)
     {
         text.GetComponent<TextMeshProUGUI>().text = updateText;
