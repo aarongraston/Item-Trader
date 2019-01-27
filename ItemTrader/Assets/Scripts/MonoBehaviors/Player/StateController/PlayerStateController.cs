@@ -16,7 +16,8 @@ public class PlayerStateController : MonoBehaviour
 
     public ItemObject item;
     public PlayerVariables variables;
-    public GameObject boat; 
+    public GameObject boat;
+    public GameObject itemPosition;
 
     
 
@@ -97,6 +98,21 @@ public class PlayerStateController : MonoBehaviour
             }
         }
         return closest;
+    }
+
+    public void SetAndHoldItem(ItemObject itemToHold)
+    {
+        item = itemToHold;
+        Instantiate(item.item, itemPosition.transform.position, Quaternion.identity, itemPosition.transform);
+    }
+
+    public void destroyCurrentItem()
+    {
+        if (itemPosition.transform.GetChild(0))
+        {
+            Destroy(itemPosition.transform.GetChild(0).gameObject);
+        }
+            
     }
 
 

@@ -7,7 +7,7 @@ public class Character : MonoBehaviour
     public bool playerInRange = false;
     public DialogueObject nullDialogue;
     public DialogueObject[] dialogue;
-    DialogueObject currentDialogue;
+    public DialogueObject currentDialogue;
 
     public bool LookForItem(ItemObject item)
     {

@@ -15,6 +15,8 @@ public class TalkAction : InputAction
         if (talking == false)
         {
             controller.pointInDialogue = 0;
+            //controller.destroyCurrentItem();
+            controller.SetAndHoldItem(controller.talkingTo.GetComponent<Character>().currentDialogue.itemToGive);
             controller.currentState = moveState;
         }
     }
