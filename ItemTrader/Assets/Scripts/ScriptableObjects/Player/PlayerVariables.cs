@@ -12,4 +12,7 @@ public class PlayerVariables : ScriptableObject
     public float timeAirStall = 5f;
     public float movementInAirPercentage = 0.6f;
 
+    public float stepGravity = 0f;
+    public float stepLift = 0f;
+
 }

@@ -18,3 +18,5 @@ MonoBehaviour:
   gravity: 2.58
   timeAirStall: 0.1
   movementInAirPercentage: 0.7
+  stepGravity: 0.02
+  stepLift: 0.25

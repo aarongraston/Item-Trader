@@ -64,6 +64,11 @@ ModelImporter:
     400056: UpperThumb_L
     400058: UpperThumb_R
     2100000: unnamed
+    2100002: Material
+    2100004: Clothing
+    2100006: Material_001
+    2100008: Beak
+    2100010: Eyes
     4300000: Cylinder
     7400000: Default Take
     7400002: Run
