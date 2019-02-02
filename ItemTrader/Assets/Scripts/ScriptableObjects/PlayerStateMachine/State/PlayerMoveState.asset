@@ -16,3 +16,4 @@ MonoBehaviour:
   inputActions:
   - {fileID: 11400000, guid: 68184913e32ce9c4e912483c912b906d, type: 2}
   - {fileID: 11400000, guid: 447058ebf9a630a4faa02131d457953f, type: 2}
+  animation: {fileID: 9100000, guid: 8119f20ef94e00048b7652a2a1115906, type: 2}

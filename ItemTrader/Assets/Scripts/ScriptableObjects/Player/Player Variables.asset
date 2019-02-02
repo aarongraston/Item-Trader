@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   turnSpeed: 0.6
-  jumpSpeed: 0.68
-  gravity: 2.58
+  jumpSpeed: 0.61
+  gravity: 1.89
   timeAirStall: 0.1
   movementInAirPercentage: 0.7
   stepGravity: 0.02

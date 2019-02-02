@@ -32,7 +32,25 @@ public class MoveStateUpdate : StateUpdateMethod
         controller.charController.Move(movement);
 
         if (movement.x != 0 || movement.z != 0)
+        {
+            Debug.Log(controller.charController.velocity.x);
+            Debug.Log(controller.charController.velocity.z);
+
+            if (Mathf.Abs(controller.charController.velocity.x) > 0.25 || Mathf.Abs(controller.charController.velocity.z) > 0.25)
+            {
+                controller.GetComponentInChildren<Animator>().SetBool("running", true);
+            }
+            else
+            {
+                controller.GetComponentInChildren<Animator>().SetBool("running", false);
+            }
+
             controller.transform.rotation = Quaternion.Slerp(controller.transform.rotation, Quaternion.LookRotation(movementKeys), controller.variables.turnSpeed);
+        }
+        else
+        {
+            controller.GetComponentInChildren<Animator>().SetBool("running", false);
+        }
 
     }
 }

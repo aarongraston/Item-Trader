@@ -74,6 +74,7 @@ ModelImporter:
     7400002: Run
     7400004: Walk
     7400006: Walk (1)
+    7400008: Idle01
     9500000: //RootNode
     13700000: Cylinder
   externalObjects: {}
@@ -105,17 +106,17 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Default Take
-      takeName: Default Take
+      name: Idle01
+      takeName: Idle01
       firstFrame: 0
-      lastFrame: 15
+      lastFrame: 28
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
