@@ -103,6 +103,7 @@ public class PlayerStateController : MonoBehaviour
     public void SetAndHoldItem(ItemObject itemToHold)
     {
         item = itemToHold;
+        GetComponentInChildren<Animator>().SetBool("holdingItem", true);
         Instantiate(item.item, itemPosition.transform.position, Quaternion.identity, itemPosition.transform);
     }
 
@@ -113,6 +114,11 @@ public class PlayerStateController : MonoBehaviour
             Destroy(itemPosition.transform.GetChild(0).gameObject);
         }
             
+    }
+
+    public void ChangeAnimator(State state)
+    {
+        GetComponent<ChangeAnimator>().SwitchAnimator(state.animator);
     }
 
 

@@ -24,6 +24,7 @@ public class JumpAction : InputAction
     private void Jump(PlayerStateController controller)
     {
         controller.currentState = nextState;
+        controller.ChangeAnimator(nextState);
 
     }
 

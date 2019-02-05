@@ -18,6 +18,7 @@ public class TalkAction : InputAction
             //controller.destroyCurrentItem();
             controller.SetAndHoldItem(controller.talkingTo.GetComponent<Character>().currentDialogue.itemToGive);
             controller.currentState = moveState;
+            controller.ChangeAnimator(moveState);
         }
     }
 
