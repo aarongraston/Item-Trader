@@ -118,7 +118,7 @@ public class PlayerStateController : MonoBehaviour
 
     public void ChangeAnimator(State state)
     {
-        GetComponent<ChangeAnimator>().SwitchAnimator(state.animator);
+        
     }
 
 

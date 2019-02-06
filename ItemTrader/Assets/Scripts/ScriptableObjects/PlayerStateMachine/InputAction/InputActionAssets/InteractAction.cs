@@ -23,7 +23,6 @@ public class InteractAction : InputAction
             dManager.EnableCanvas();
             controller.pointInDialogue++;
             controller.currentState = talkState;
-            controller.ChangeAnimator(talkState);
         }
     }
 
@@ -54,7 +53,6 @@ public class InteractAction : InputAction
         if (hit.transform.gameObject == theDock)
         {
             controller.currentState = boatState;
-            controller.ChangeAnimator(boatState);
             boat.GetComponent<CheckandLoadPlayer>().LoadPlayer();
         }
 
@@ -73,7 +71,6 @@ public class InteractAction : InputAction
         {
             boat.GetComponent<CheckandLoadPlayer>().UnloadPlayer(theDock);
             controller.currentState = moveState;
-            controller.ChangeAnimator(moveState);
 
         }
         

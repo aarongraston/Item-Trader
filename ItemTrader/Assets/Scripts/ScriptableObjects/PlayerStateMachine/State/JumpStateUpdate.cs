@@ -26,10 +26,14 @@ public class JumpStateUpdate : StateUpdateMethod
 
             movement.y = movement.y - controller.variables.gravity * Time.deltaTime;
 
-            if (movement.y <= 0)
+            if (movement.y <= 1)
             {
-                controller.airTime -= Time.deltaTime;
-                movement.y = 0;
+                controller.GetComponentInChildren<Animator>().SetTrigger("fallTrigger");
+                if (movement.y <= 0)
+                {
+                    controller.airTime -= Time.deltaTime;
+                    movement.y = 0;
+                }
             }
 
 
@@ -56,6 +60,7 @@ public class JumpStateUpdate : StateUpdateMethod
         {
             controller.airTime = controller.variables.timeAirStall;
             controller.currentState = groundedState;
+            controller.GetComponentInChildren<Animator>().SetBool("isGrounded", true);
             return;
         }
 

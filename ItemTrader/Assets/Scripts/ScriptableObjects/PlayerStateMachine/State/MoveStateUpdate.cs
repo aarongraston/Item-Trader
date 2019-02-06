@@ -20,11 +20,13 @@ public class MoveStateUpdate : StateUpdateMethod
 
         if (controller.charController.isGrounded)
         {
+            controller.GetComponentInChildren<Animator>().SetBool("isGrounded", true);
             gravityAmount = 0.1f;
             movement.y = -0.01f;
         }
         else
         {
+            controller.GetComponentInChildren<Animator>().SetBool("isGrounded", false);
             gravityAmount = controller.variables.gravity;
             movement.y -= gravityAmount * Time.deltaTime;
         }
@@ -33,8 +35,6 @@ public class MoveStateUpdate : StateUpdateMethod
 
         if (movement.x != 0 || movement.z != 0)
         {
-            Debug.Log(controller.charController.velocity.x);
-            Debug.Log(controller.charController.velocity.z);
 
             if (Mathf.Abs(controller.charController.velocity.x) > 0.25 || Mathf.Abs(controller.charController.velocity.z) > 0.25)
             {

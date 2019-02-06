@@ -12,6 +12,8 @@ public class JumpAction : InputAction
         if (controller.charController.isGrounded)
         {
             Jump(controller);
+            controller.GetComponentInChildren<Animator>().SetBool("isGrounded", false);
+            controller.GetComponentInChildren<Animator>().SetTrigger("jumpTrigger");
         }
     }
 
@@ -24,7 +26,6 @@ public class JumpAction : InputAction
     private void Jump(PlayerStateController controller)
     {
         controller.currentState = nextState;
-        controller.ChangeAnimator(nextState);
 
     }
 

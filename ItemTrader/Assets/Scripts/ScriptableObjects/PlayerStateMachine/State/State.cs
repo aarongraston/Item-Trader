@@ -8,7 +8,6 @@ public class State : ScriptableObject
     //the specifics on which update function and which actions on command are set in the inspector per State! :D very pluggable.
     public StateUpdateMethod stateUpdate;
     public InputAction[] inputActions;
-    public Animator animator;
 
         public void UpdateState(PlayerStateController controller)
     {
