@@ -26,7 +26,10 @@ public class MoveStateUpdate : StateUpdateMethod
         }
         else
         {
-            controller.GetComponentInChildren<Animator>().SetBool("isGrounded", false);
+            if (controller.charController.velocity.y < -5)
+            {
+                controller.GetComponentInChildren<Animator>().SetBool("isGrounded", false);
+            }
             gravityAmount = controller.variables.gravity;
             movement.y -= gravityAmount * Time.deltaTime;
         }
