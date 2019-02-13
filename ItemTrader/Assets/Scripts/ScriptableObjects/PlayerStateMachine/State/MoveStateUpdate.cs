@@ -22,7 +22,7 @@ public class MoveStateUpdate : StateUpdateMethod
         {
             controller.GetComponentInChildren<Animator>().SetBool("isGrounded", true);
             gravityAmount = 0.1f;
-            movement.y = -0.01f;
+            movement.y = -0.2f;
         }
         else
         {
