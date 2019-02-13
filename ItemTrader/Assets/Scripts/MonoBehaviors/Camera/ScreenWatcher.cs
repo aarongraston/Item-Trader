@@ -89,11 +89,15 @@ public class ScreenWatcher : MonoBehaviour
     public IEnumerator move(float shiftAmount, Vector3 moveMent)
     {
         float amountLeft = shiftAmount;
-
         while (amountLeft > 0)
         {
+     
+            
             amountLeft -= camVariables.camMoveSpeed;
             this.transform.Translate(moveMent, Space.World);
+   
+                
+            
             yield return null;
         }
 
