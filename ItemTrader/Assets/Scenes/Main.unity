@@ -32,13 +32,13 @@ RenderSettings:
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
-  m_DefaultReflectionMode: 0
+  m_DefaultReflectionMode: 1
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44522798, g: 0.49485326, b: 0.5738823, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -69,7 +69,7 @@ LightmapSettings:
     m_FinalGather: 0
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
-    m_ReflectionCompression: 2
+    m_ReflectionCompression: 1
     m_MixedBakeMode: 2
     m_BakeBackend: 1
     m_PVRSampling: 1
@@ -701,7 +701,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.98101705, b: 0.9292453, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.99
   m_Range: 10
   m_SpotAngle: 30
@@ -710,7 +710,7 @@ Light:
     m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.756
+    m_Strength: 0.276
     m_Bias: 0
     m_NormalBias: 0
     m_NearPlane: 0.2
@@ -2512,15 +2512,23 @@ PrefabInstance:
     - target: {fileID: 2300002, guid: 5b1a01fe71d32704dbe65c832b0ad9ce, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 27405c9c431e8c546802cf3adeb7cdf1, type: 2}
+      objectReference: {fileID: 2100000, guid: 84b9e1d19d11078d11005b9844295342, type: 2}
     - target: {fileID: 2300004, guid: 5b1a01fe71d32704dbe65c832b0ad9ce, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 27405c9c431e8c546802cf3adeb7cdf1, type: 2}
+      objectReference: {fileID: 2100000, guid: 83f1fce7511eb5b48bf8919ad323745b, type: 2}
     - target: {fileID: 2300006, guid: 5b1a01fe71d32704dbe65c832b0ad9ce, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 27405c9c431e8c546802cf3adeb7cdf1, type: 2}
+      objectReference: {fileID: 2100000, guid: 84b9e1d19d11078d11005b9844295342, type: 2}
+    - target: {fileID: 2300008, guid: 5b1a01fe71d32704dbe65c832b0ad9ce, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 83f1fce7511eb5b48bf8919ad323745b, type: 2}
+    - target: {fileID: 2300010, guid: 5b1a01fe71d32704dbe65c832b0ad9ce, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 84b9e1d19d11078d11005b9844295342, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b1a01fe71d32704dbe65c832b0ad9ce, type: 3}
 --- !u!1 &1739176609 stripped
