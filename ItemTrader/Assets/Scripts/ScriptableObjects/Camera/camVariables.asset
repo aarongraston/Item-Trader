@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: camVariables
   m_EditorClassIdentifier: 
   percentScreenShift: 0.2
-  camZoomAmount: 13
+  camZoomAmount: 15
   camShiftAmount: {x: 17.8, y: 0, z: 17.8}
   camMoveSpeed: 1.06
   smoothTime: 0.37
+  lerpAmount: 0.1
