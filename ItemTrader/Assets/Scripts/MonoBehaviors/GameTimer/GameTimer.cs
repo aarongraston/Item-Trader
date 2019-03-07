@@ -6,7 +6,7 @@ public class GameTimer : MonoBehaviour
 {
     //lights in the scene
     public Light sun, moon;
-
+    public Canvas drawField;
     
 
     //the amount of the 15 minute day that is "daytime"
