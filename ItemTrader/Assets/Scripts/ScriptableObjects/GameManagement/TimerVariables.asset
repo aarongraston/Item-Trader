@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TimerVariables
   m_EditorClassIdentifier: 
   gameDays: 3
-  dayLength: 147
-  dayTimeAmount: 0.4
+  dayLength: 900
+  dayTimeAmount: 0.596
   eventInterval: 0.05

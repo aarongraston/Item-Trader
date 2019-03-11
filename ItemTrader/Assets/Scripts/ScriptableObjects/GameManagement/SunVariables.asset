@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: SunVariables
   m_EditorClassIdentifier: 
   startAngle: 40
+  fadeTime: 0
+  atmosphereEnd: 0.359

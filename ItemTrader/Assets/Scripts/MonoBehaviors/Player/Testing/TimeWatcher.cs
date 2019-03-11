@@ -26,7 +26,6 @@ public class TimeWatcher : MonoBehaviour
 
     private void CheckInterval()
     {
-        Debug.Log("checkInterval Called");
 
         if (rend.sharedMaterial == mat1)
         {

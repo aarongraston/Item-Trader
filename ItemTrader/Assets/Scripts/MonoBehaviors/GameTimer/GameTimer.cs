@@ -10,7 +10,7 @@ public class GameTimer : MonoBehaviour
     public SunVariables sunVariables;
 
     //lights in the scene
-    public Light sun, moon;
+    public Light sun, moon, sunSet, sunRise;
     public Canvas drawField;
     
     //the percentage of the cycle that is "daytime"
@@ -19,6 +19,7 @@ public class GameTimer : MonoBehaviour
     private float nightTimeAmount;
     private float turnToNight;
     private float daySeconds;
+    private float constDaySeconds;
     private float totalRotDistance;
 
     private Timer timer;
@@ -37,9 +38,10 @@ public class GameTimer : MonoBehaviour
         dayTimeAmount = timerVariables.dayTimeAmount;
         nightTimeAmount = 1 - dayTimeAmount;
         turnToNight = nightTimeAmount * timerVariables.dayLength;
-        daySeconds = timerVariables.dayLength - turnToNight;
-        Debug.Log(daySeconds);
+        daySeconds = timerVariables.dayLength * timerVariables.dayTimeAmount;
+        constDaySeconds = daySeconds;
         StartCoroutine(MoveSun());
+        sunSet.intensity = 0;
     }
 
     public void Update()
@@ -54,33 +56,44 @@ public class GameTimer : MonoBehaviour
         float speed = totalRotDistance / daySeconds;
         float halfDay = daySeconds / 2;
 
-        Color morning = new Color(0.86f, 0.70f, 0.016f, 1);
-        Color midDay = new Color(1, 1, 1, 1);
-        Color Sunset = new Color(0.90f, 0.65f, 0.40f, 1);
+        Color morning = new Color(0.91f, 0.75f, 0.39f, 1);
+        Color midDay = new Color(0.91f, 0.86f, 0.80f, 1);
+        Color Sunset = new Color(0.84f, 0.57f, 0.50f, 1);
         Color current = morning;
 
         //rewrite this to be based on a percentage of the total day elapsed.
+        float timeSinceStartedLerping = Time.time - startedLerping;
+        float timeSinceStartedLerpingTwo = 0f;
+        float sunSetStart = 0f;
 
         while (timer.daytime)
         {
             
             if (daySeconds > 0)
             {
-                float timeSinceStartedLerping = Time.time - startedLerping;
-                
 
-                if (timeSinceStartedLerping <= (daySeconds / 2))
+                if (timeSinceStartedLerping <= (constDaySeconds / 2))
                 {
-                    
-                    float percentageComplete = timeSinceStartedLerping / (daySeconds * 2) / Time.deltaTime / 3;
-                    current = Color.Lerp(current, midDay, percentageComplete);
-                    startedLerpingTwo = Time.time; 
+                    timeSinceStartedLerping += Time.deltaTime;
+                    float percentageComplete = timeSinceStartedLerping / (constDaySeconds / 2);
+                    current = Color.Lerp(morning, midDay, percentageComplete);
+                    startedLerpingTwo = Time.time;
+
+                    sunRise.intensity = Mathf.Lerp(1, 0, percentageComplete / sunVariables.atmosphereEnd);
                 }
                 else
                 {
-                    float timeSinceStartedLerpingTwo = Time.time - startedLerpingTwo;
-                    float percentageComplete = timeSinceStartedLerpingTwo / (daySeconds * 2) / Time.deltaTime / 3;
-                    current = Color.Lerp(current, Sunset, percentageComplete);
+                    timeSinceStartedLerpingTwo += Time.deltaTime;
+                    float percentageComplete = timeSinceStartedLerpingTwo / (constDaySeconds / 2);
+                    current = Color.Lerp(midDay, Sunset, percentageComplete);
+
+                    if (percentageComplete > (1 - sunVariables.atmosphereEnd))
+                    {
+                        sunSetStart += Time.deltaTime;
+                        float divider = sunSetStart / (sunVariables.atmosphereEnd * (constDaySeconds / 2));
+                        Debug.Log(divider);
+                        sunSet.intensity = Mathf.Lerp(0, 1, divider);
+                    }
                 }
                 
                 sun.color = current;
@@ -92,6 +105,37 @@ public class GameTimer : MonoBehaviour
             yield return null;
         }
 
+        StartCoroutine(MoveMoon());
+
+    }
+
+    IEnumerator MoveMoon()
+    {
+        while (!timer.daytime)
+        {
+
+            yield return null;
+        }
+    }
+
+    IEnumerator FadeMoon()
+    {
+        if (moon.isActiveAndEnabled)
+        {
+            yield return null;
+        }
+    }
+    IEnumerator FadeSun()
+    {
+        float fadeTime = sunVariables.fadeTime;
+        
+        if (sun.isActiveAndEnabled)
+        {
+            while (true)
+            {
+                yield return null;
+            }
+        }
     }
 
     
