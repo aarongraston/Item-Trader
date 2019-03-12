@@ -60,7 +60,7 @@ public class Timer : MonoBehaviour
         float nightIntervalCount = nightEventInterval;
         float changeToNight = dayLength - daylight;
 
-        while (time > 0)
+        while (numDays > 0)
         {
            
             time -= Time.deltaTime;
@@ -68,7 +68,6 @@ public class Timer : MonoBehaviour
             if (time <= changeToNight)
             {
                 daytime = false;
-                changeToNight = 0;
             }
 
             if (daytime)
@@ -93,10 +92,11 @@ public class Timer : MonoBehaviour
                 }
             }
 
-            if (time <= 0 && numDays > 0)
+            if (time <= 0)
             {
                 float leftOverMil = time;
                 time = timerVariables.dayLength + time;
+                daytime = true;  
                 numDays -= 1;
             }
             yield return null;

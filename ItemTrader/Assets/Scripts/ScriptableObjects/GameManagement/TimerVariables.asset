@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da64a402a612914ba523f202da625e8, type: 3}
   m_Name: TimerVariables
   m_EditorClassIdentifier: 
-  gameDays: 3
-  dayLength: 900
-  dayTimeAmount: 0.596
+  gameDays: 1.5
+  dayLength: 139
+  dayTimeAmount: 0.5
   eventInterval: 0.05

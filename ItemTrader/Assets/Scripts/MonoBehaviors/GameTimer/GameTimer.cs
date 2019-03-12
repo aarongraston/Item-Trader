@@ -20,7 +20,11 @@ public class GameTimer : MonoBehaviour
     private float turnToNight;
     private float daySeconds;
     private float constDaySeconds;
+    private float constNightSeconds;
     private float totalRotDistance;
+
+    private Vector3 sunStartRotation;
+    private Vector3 moonStartRotation;
 
     private Timer timer;
 
@@ -32,13 +36,19 @@ public class GameTimer : MonoBehaviour
     {
         timer = FindObjectOfType<Timer>();
 
+        sunStartRotation = sun.transform.eulerAngles;
+        moonStartRotation = moon.transform.eulerAngles;
+
         sun.gameObject.transform.Rotate(0, 0, -sunVariables.startAngle, Space.World);
+        sun.intensity = sunVariables.sunIntensity;
+        RenderSettings.ambientLight = sunVariables.dayAmbient;
         totalRotDistance = sunVariables.startAngle * 2;
 
         dayTimeAmount = timerVariables.dayTimeAmount;
         nightTimeAmount = 1 - dayTimeAmount;
         turnToNight = nightTimeAmount * timerVariables.dayLength;
         daySeconds = timerVariables.dayLength * timerVariables.dayTimeAmount;
+        constNightSeconds = turnToNight;
         constDaySeconds = daySeconds;
         StartCoroutine(MoveSun());
         sunSet.intensity = 0;
@@ -51,6 +61,9 @@ public class GameTimer : MonoBehaviour
 
     IEnumerator MoveSun()
     {
+        sun.transform.eulerAngles = sunStartRotation;
+        sun.gameObject.transform.Rotate(0, 0, -sunVariables.startAngle, Space.World);
+
         float startedLerping = Time.time;
         float startedLerpingTwo = 0f;
         float speed = totalRotDistance / daySeconds;
@@ -91,7 +104,6 @@ public class GameTimer : MonoBehaviour
                     {
                         sunSetStart += Time.deltaTime;
                         float divider = sunSetStart / (sunVariables.atmosphereEnd * (constDaySeconds / 2));
-                        Debug.Log(divider);
                         sunSet.intensity = Mathf.Lerp(0, 1, divider);
                     }
                 }
@@ -101,40 +113,110 @@ public class GameTimer : MonoBehaviour
 
             daySeconds -= Time.deltaTime;
             sun.gameObject.transform.Rotate(0, 0, speed * Time.deltaTime, Space.World);
+            moon.gameObject.transform.Rotate(0, 0, speed * Time.deltaTime, Space.World);
 
             yield return null;
         }
 
+        daySeconds = constDaySeconds;
+
+        StartCoroutine(FadeMoon());
+        StartCoroutine(FadeSun());
         StartCoroutine(MoveMoon());
 
     }
 
     IEnumerator MoveMoon()
     {
+        moon.transform.eulerAngles = moonStartRotation;
+        moon.gameObject.transform.Rotate(0, 0, -sunVariables.startAngle, Space.World);
+
+        float counter = 0f;
+        float speed = totalRotDistance / turnToNight;
+
         while (!timer.daytime)
         {
-
+            if (turnToNight > 0)
+            {
+                turnToNight -= Time.deltaTime;
+                moon.gameObject.transform.Rotate(0, 0, speed * Time.deltaTime, Space.World);
+                sun.gameObject.transform.Rotate(0, 0, speed * Time.deltaTime, Space.World);
+            }
             yield return null;
         }
+
+        turnToNight = constNightSeconds;
+
+        StartCoroutine(FadeMoon());
+        StartCoroutine(FadeSun());
+        StartCoroutine(MoveSun());
     }
 
     IEnumerator FadeMoon()
     {
+
+        float fadeTime = sunVariables.fadeTime;
+
         if (moon.isActiveAndEnabled)
         {
-            yield return null;
+            float intensity = moon.intensity;
+            float countUp = 0f;
+
+            while (countUp < fadeTime)
+            {
+                moon.intensity = Mathf.Lerp(intensity, 0, countUp / fadeTime);
+                RenderSettings.ambientLight = Color.Lerp(sunVariables.nightAmbient, sunVariables.dayAmbient, countUp / fadeTime);
+                countUp += Time.deltaTime;
+                yield return null;
+            }
+            moon.gameObject.SetActive(false);
+        }
+        else
+        {
+            moon.gameObject.SetActive(true);
+            float countUp = 0f;
+
+            while (countUp < fadeTime)
+            {
+                moon.intensity = Mathf.Lerp(0, sunVariables.moonIntensity, countUp / fadeTime);
+                sunSet.intensity = Mathf.Lerp(1, 0, countUp / fadeTime);
+                RenderSettings.ambientLight = Color.Lerp(sunVariables.dayAmbient, sunVariables.nightAmbient, countUp / fadeTime); 
+                countUp += Time.deltaTime;
+                yield return null;
+            }
         }
     }
+
     IEnumerator FadeSun()
     {
         float fadeTime = sunVariables.fadeTime;
-        
+
         if (sun.isActiveAndEnabled)
         {
-            while (true)
+            float intensity = sun.intensity;
+            float countUp = 0f;
+
+            while (countUp < fadeTime)
             {
+                sun.intensity = Mathf.Lerp(intensity, 0, countUp / fadeTime);
+                countUp += Time.deltaTime;
                 yield return null;
             }
+            sun.gameObject.SetActive(false);
+        }
+        else
+        {
+            sun.gameObject.SetActive(true);
+            float countUp = 0f;
+
+            while (countUp < fadeTime)
+            {
+                sun.intensity = Mathf.Lerp(0, sunVariables.sunIntensity, countUp / fadeTime);
+                sunRise.intensity = Mathf.Lerp(0, 1, countUp / fadeTime);
+                countUp += Time.deltaTime;
+                yield return null;
+            }
+            
         }
     }
 
