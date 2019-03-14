@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameTimer : MonoBehaviour
 {
@@ -52,6 +53,8 @@ public class GameTimer : MonoBehaviour
         constDaySeconds = daySeconds;
         StartCoroutine(MoveSun());
         sunSet.intensity = 0;
+
+        StartCoroutine(MoveSunUI());
     }
 
     public void Update()
@@ -219,6 +222,36 @@ public class GameTimer : MonoBehaviour
             
         }
     }
+
+    IEnumerator MoveSunUI()
+    {
+        yield return new WaitForEndOfFrame();
+        RectTransform[] images;
+        Transform imageHolder = drawField.gameObject.transform.Find("TimeLine");
+        RectTransform sun = drawField.gameObject.transform.Find("MoonSun").GetComponent<RectTransform>();
+
+
+        images = imageHolder.GetComponentsInChildren<RectTransform>();
+        Debug.Log("total distance to move: " + images[images.Length - 1].anchoredPosition.x);
+        float distance = images[images.Length - 1].anchoredPosition.x;
+
+        float speedNight = distance / constNightSeconds;
+        float countUp = 0f;
+
+        while (timer.daytime)
+        {
+            countUp += Time.deltaTime;
+            Debug.Log(countUp);
+            Debug.Log(Mathf.Lerp(0, distance, countUp / constDaySeconds));
+            sun.anchoredPosition = new Vector2(Mathf.Lerp(-(distance / 2), (distance / 2), countUp / constDaySeconds), sun.anchoredPosition.y);
+            yield return null;
+        }
+
+
+
+
+
+        }
 
     
 }
