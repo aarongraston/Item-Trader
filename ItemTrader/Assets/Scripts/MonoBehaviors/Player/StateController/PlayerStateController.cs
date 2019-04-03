@@ -19,7 +19,7 @@ public class PlayerStateController : MonoBehaviour
     public GameObject boat;
     public GameObject itemPosition;
 
-    
+    private Animator charAnimator;
 
     //private variables
     private ButtonPressed bPressed = ButtonPressed.Nothing;
@@ -29,7 +29,6 @@ public class PlayerStateController : MonoBehaviour
     {
         Init();
         airTime = variables.timeAirStall;
-
     }
 
     private void Init()
@@ -38,6 +37,7 @@ public class PlayerStateController : MonoBehaviour
 
         //if you want to change the state the player loads into at the start of the game (you will most likely for the sake of an intro), here is where to do it:
         currentState = (State)AssetDatabase.LoadAssetAtPath("Assets/Scripts/ScriptableObjects/PlayerStateMachine/State/PlayerMoveState.asset", typeof(State));
+        charAnimator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -103,7 +103,8 @@ public class PlayerStateController : MonoBehaviour
     public void SetAndHoldItem(ItemObject itemToHold)
     {
         item = itemToHold;
-        GetComponentInChildren<Animator>().SetBool("holdingItem", true);
+        charAnimator.SetBool("holdingItem", true);
+        charAnimator.SetLayerWeight(1, 1);
         Instantiate(item.item, itemPosition.transform.position, Quaternion.identity, itemPosition.transform);
     }
 

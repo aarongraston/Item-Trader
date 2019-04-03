@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SunVariables
   m_EditorClassIdentifier: 
   startAngle: 40
-  fadeTime: 2.74
+  fadeTime: 3.55
   atmosphereEnd: 0.402
   sunIntensity: 0.74
   moonIntensity: 0.74

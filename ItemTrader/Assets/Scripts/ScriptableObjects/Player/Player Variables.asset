@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e62b0a59106fa04b9430354e4ff4b8a, type: 3}
   m_Name: Player Variables
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 9
   turnSpeed: 0.6
   jumpSpeed: 0.61
   gravity: 2

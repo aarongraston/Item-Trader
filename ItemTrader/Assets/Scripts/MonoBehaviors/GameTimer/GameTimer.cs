@@ -73,8 +73,8 @@ public class GameTimer : MonoBehaviour
         float halfDay = daySeconds / 2;
 
         Color morning = new Color(0.91f, 0.75f, 0.39f, 1);
-        Color midDay = new Color(0.91f, 0.86f, 0.80f, 1);
-        Color Sunset = new Color(0.84f, 0.57f, 0.50f, 1);
+        Color midDay = new Color(0.91f, 0.83f, 0.72f, 1);
+        Color Sunset = new Color(0.80f, 0.54f, 0.55f, 1);
         Color current = morning;
 
         //rewrite this to be based on a percentage of the total day elapsed.
