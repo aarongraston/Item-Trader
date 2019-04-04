@@ -6,9 +6,13 @@ public class Item : MonoBehaviour
 {
     private Rigidbody rb;
 
+    public ItemVariables itemVars;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.useGravity = false;
+        rb.isKinematic = true;
     }
 
     // Update is called once per frame
@@ -17,23 +21,44 @@ public class Item : MonoBehaviour
         
     }
 
-    public bool checkHeld(PlayerStateController pc) {
-        if (pc.item == gameObject)
-        {
-            return true;
-        }
-        else
-            return false;
+    public void moveToPlayer() {
+
+        Transform playerItemPos = GameObject.FindGameObjectWithTag("Player").transform.FindDeepChild("ItemPosition");
+        StartCoroutine(Movement(playerItemPos, itemVars.timePercentage));
     }
 
-    public void setItem(PlayerStateController pc) {
-        if (pc.item == gameObject) {
-            rb.isKinematic = false;
-            rb.useGravity = true;
+    public IEnumerator Movement(Transform destination, float speed) {
+
+        Vector3 startPos = this.transform.position;
+        Transform itemDest = destination;
+
+        float timePassed = 0f;
+
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateController>().SetHoldingItem(
+    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateController>().talkingTo.GetComponent<Character>().currentDialogue.itemToGive);
+
+        while (transform.position != itemDest.position) {
+            timePassed += Time.deltaTime * speed;
+
+            transform.position = Vector3.Lerp(startPos, itemDest.position, timePassed);
+            yield return null;
         }
 
-        if (pc.item != gameObject) {
-            
-        }
+        Transform playerParent = GameObject.FindGameObjectWithTag("Player").transform.FindDeepChild("ItemPosition");
+
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateController>().itemRep = gameObject;
+        this.transform.SetParent(playerParent);
+    }
+
+    public void Bump() {
+
+        transform.parent = null;
+        rb = gameObject.GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        rb.useGravity = true;
+
+        Vector3 force = new Vector3(Random.Range(0f, 1f), 0.2f, Random.Range(0, 1f));
+
+        rb.AddForce(force, ForceMode.Impulse);     
     }
 }

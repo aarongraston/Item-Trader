@@ -15,6 +15,7 @@ public class PlayerStateController : MonoBehaviour
     [HideInInspector] public GameObject talkingTo;
 
     public ItemObject item;
+    public GameObject itemRep;
     public PlayerVariables variables;
     public GameObject boat;
     public GameObject itemPosition;
@@ -100,12 +101,19 @@ public class PlayerStateController : MonoBehaviour
         return closest;
     }
 
-    public void SetAndHoldItem(ItemObject itemToHold)
+    public void SetHoldingItem(ItemObject itemToHold)
     {
+        if (item.itemName != "No Item") {
+            itemRep.GetComponent<Item>().Bump();
+        }
+
         item = itemToHold;
         charAnimator.SetBool("holdingItem", true);
         charAnimator.SetLayerWeight(1, 1);
-        Instantiate(item.item, itemPosition.transform.position, Quaternion.identity, itemPosition.transform);
+    }
+
+    public void endConversation() {
+        talkingTo.GetComponent<Character>().instanceItem(this);
     }
 
     public void destroyCurrentItem()

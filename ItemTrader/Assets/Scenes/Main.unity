@@ -937,6 +937,7 @@ MonoBehaviour:
   pointInDialogue: 0
   talkingTo: {fileID: 0}
   item: {fileID: 11400000, guid: b3ae3a8199b8b374f8949ee970e827d4, type: 2}
+  itemRep: {fileID: 0}
   variables: {fileID: 11400000, guid: f4a13128e99638c4ca46082bdcd4a3ed, type: 2}
   boat: {fileID: 1997323663}
   itemPosition: {fileID: 2017512309}

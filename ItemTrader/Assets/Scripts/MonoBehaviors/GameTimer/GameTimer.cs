@@ -232,7 +232,6 @@ public class GameTimer : MonoBehaviour
 
 
         images = imageHolder.GetComponentsInChildren<RectTransform>();
-        Debug.Log("total distance to move: " + images[images.Length - 1].anchoredPosition.x);
         float distance = images[images.Length - 1].anchoredPosition.x;
 
         float speedNight = distance / constNightSeconds;
@@ -241,8 +240,6 @@ public class GameTimer : MonoBehaviour
         while (timer.daytime)
         {
             countUp += Time.deltaTime;
-            Debug.Log(countUp);
-            Debug.Log(Mathf.Lerp(0, distance, countUp / constDaySeconds));
             sun.anchoredPosition = new Vector2(Mathf.Lerp(-(distance / 2), (distance / 2), countUp / constDaySeconds), sun.anchoredPosition.y);
             yield return null;
         }

@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8da64a402a612914ba523f202da625e8, type: 3}
-  m_Name: TimerVariables
+  m_Script: {fileID: 11500000, guid: ee80a9cfd7bde454586c78514a085319, type: 3}
+  m_Name: Item Variables
   m_EditorClassIdentifier: 
-  gameDays: 3
-  dayLength: 900
-  dayTimeAmount: 0.6
-  eventInterval: 0.05
+  timePercentage: 6.43

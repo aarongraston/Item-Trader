@@ -9,6 +9,8 @@ public class Character : MonoBehaviour
     public DialogueObject[] dialogue;
     public DialogueObject currentDialogue;
 
+    public GameObject itemStartPos;
+
     public bool LookForItem(ItemObject item)
     {
 
@@ -60,6 +62,14 @@ public class Character : MonoBehaviour
     public bool CheckTrigger()
     {
         return playerInRange; 
+    }
+
+    public void instanceItem(PlayerStateController pc) {
+
+        GameObject item = Instantiate(currentDialogue.itemToGive.item, itemStartPos.transform.position, Quaternion.identity, itemStartPos.transform);
+        
+        item.GetComponent<Item>().moveToPlayer();
+
     }
 
 

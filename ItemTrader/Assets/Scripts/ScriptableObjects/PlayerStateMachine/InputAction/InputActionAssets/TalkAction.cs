@@ -18,7 +18,8 @@ public class TalkAction : InputAction
             controller.pointInDialogue = 0;
             //controller.destroyCurrentItem();
             //here is where the item is set and held
-            ItemObject item = controller.talkingTo.GetComponent<Character>().currentDialogue.itemToGive;
+            //trigger end of conversation in player
+            controller.endConversation();
             controller.currentState = moveState;
         }
     }
