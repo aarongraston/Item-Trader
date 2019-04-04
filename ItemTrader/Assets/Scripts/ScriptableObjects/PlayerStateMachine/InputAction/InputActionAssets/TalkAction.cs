@@ -14,9 +14,11 @@ public class TalkAction : InputAction
         controller.pointInDialogue++;
         if (talking == false)
         {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
             controller.pointInDialogue = 0;
             //controller.destroyCurrentItem();
-            controller.SetAndHoldItem(controller.talkingTo.GetComponent<Character>().currentDialogue.itemToGive);
+            //here is where the item is set and held
+            ItemObject item = controller.talkingTo.GetComponent<Character>().currentDialogue.itemToGive;
             controller.currentState = moveState;
         }
     }
