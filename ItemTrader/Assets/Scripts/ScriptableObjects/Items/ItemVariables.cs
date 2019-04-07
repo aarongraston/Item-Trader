@@ -6,5 +6,6 @@ using UnityEngine;
 public class ItemVariables : ScriptableObject
 {
     public float timePercentage = 0.1f;
+    public float sizePercentage = 0.1f;
 
 }

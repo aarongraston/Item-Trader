@@ -21,16 +21,18 @@ public class Item : MonoBehaviour
         
     }
 
-    public void moveToPlayer() {
+    public void moveToPlayer(Vector3 originalSize) {
 
         Transform playerItemPos = GameObject.FindGameObjectWithTag("Player").transform.FindDeepChild("ItemPosition");
-        StartCoroutine(Movement(playerItemPos, itemVars.timePercentage));
+        StartCoroutine(Movement(playerItemPos, originalSize, itemVars.timePercentage));
     }
 
-    public IEnumerator Movement(Transform destination, float speed) {
+    public IEnumerator Movement(Transform destination, Vector3 originalSize, float speed) {
 
         Vector3 startPos = this.transform.position;
         Transform itemDest = destination;
+        Vector3 sizeTarget = originalSize;
+        Vector3 currentSize = this.transform.localScale;
 
         float timePassed = 0f;
 
@@ -41,6 +43,7 @@ public class Item : MonoBehaviour
             timePassed += Time.deltaTime * speed;
 
             transform.position = Vector3.Lerp(startPos, itemDest.position, timePassed);
+            transform.localScale = Vector3.Lerp(currentSize, sizeTarget, timePassed);
             yield return null;
         }
 

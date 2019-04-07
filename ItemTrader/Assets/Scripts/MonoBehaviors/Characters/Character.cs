@@ -67,8 +67,15 @@ public class Character : MonoBehaviour
     public void instanceItem(PlayerStateController pc) {
 
         GameObject item = Instantiate(currentDialogue.itemToGive.item, itemStartPos.transform.position, Quaternion.identity, itemStartPos.transform);
+        Vector3 originalSize = item.transform.localScale;
+        item.transform.localScale = new Vector3(
+            item.transform.localScale.x * item.GetComponent<Item>().itemVars.sizePercentage,
+            item.transform.localScale.y * item.GetComponent<Item>().itemVars.sizePercentage,
+            item.transform.localScale.z * item.GetComponent<Item>().itemVars.sizePercentage
+            );
+
         
-        item.GetComponent<Item>().moveToPlayer();
+        item.GetComponent<Item>().moveToPlayer(originalSize);
 
     }
 
