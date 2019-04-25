@@ -8,6 +8,8 @@ public class Item : MonoBehaviour
 
     public ItemVariables itemVars;
 
+    private bool focussed = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -22,12 +24,14 @@ public class Item : MonoBehaviour
     }
 
     public void moveToPlayer(Vector3 originalSize) {
-
+        Debug.Log("got in");
         Transform playerItemPos = GameObject.FindGameObjectWithTag("Player").transform.FindDeepChild("ItemPosition");
         StartCoroutine(Movement(playerItemPos, originalSize, itemVars.timePercentage));
     }
 
-    public IEnumerator Movement(Transform destination, Vector3 originalSize, float speed) {
+    //this will move the item to the players hands, called indirectly from the moveToPlayer method
+
+    private IEnumerator Movement(Transform destination, Vector3 originalSize, float speed) {
 
         Vector3 startPos = this.transform.position;
         Transform itemDest = destination;
@@ -53,6 +57,8 @@ public class Item : MonoBehaviour
         this.transform.SetParent(playerParent);
     }
 
+    //for bumping the item from the player's hands
+
     public void Bump() {
 
         transform.parent = null;
@@ -64,4 +70,11 @@ public class Item : MonoBehaviour
 
         rb.AddForce(force, ForceMode.Impulse);     
     }
+
+    //this will be used to start the hovering focus effect.
+    public void SetFocus() {
+        
+    }
+
+    
 }

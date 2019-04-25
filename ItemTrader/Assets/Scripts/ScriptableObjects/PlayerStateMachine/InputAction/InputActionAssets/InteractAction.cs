@@ -14,7 +14,11 @@ public class InteractAction : InputAction
     {
         GameObject[] characters = GameObject.FindGameObjectsWithTag("character");
         GameObject character = controller.FindClosest(characters);
-        if (character.GetComponent<Character>().CheckTrigger())
+        ItemDetection itemDetection = FindObjectOfType<ItemDetection>();
+
+        //here if in range of a character and the character is the object of focus
+
+        if (character.GetComponent<Character>().CheckTrigger() && itemDetection.currentFocus.gameObject.tag == "character")
         {
             character.GetComponent<Character>().LookForItem(controller.item);
             controller.talkingTo = character;
@@ -23,6 +27,12 @@ public class InteractAction : InputAction
             dManager.EnableCanvas();
             controller.pointInDialogue++;
             controller.currentState = talkState;
+        }
+
+        //here if the object of focus is an item
+
+        else if (itemDetection.currentFocus.gameObject.layer == 9) {
+            itemDetection.currentFocus.GetComponent<Item>().moveToPlayer(new Vector3(1, 1, 1));
         }
     }
 

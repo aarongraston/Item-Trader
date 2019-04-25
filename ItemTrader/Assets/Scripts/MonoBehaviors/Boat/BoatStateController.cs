@@ -16,7 +16,7 @@ public class BoatStateController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         //there is no reason to pass the playerController, going to change this to boat, be right back...
         currentState.UpdateState(this);

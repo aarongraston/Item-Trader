@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: Item Variables
   m_EditorClassIdentifier: 
   timePercentage: 6.43
+  sizePercentage: 0.1
+  focusBubbleDistance: 1.25
+  floatDistance: 0.01

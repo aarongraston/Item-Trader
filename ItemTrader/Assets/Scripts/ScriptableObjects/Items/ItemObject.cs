@@ -6,5 +6,5 @@ using UnityEngine;
 public class ItemObject : ScriptableObject
 {
     public string itemName;
-    public GameObject item; 
+    public GameObject item;
 }
