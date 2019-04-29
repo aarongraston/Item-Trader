@@ -15,7 +15,7 @@ public class Floating : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         GetComponent<CharacterController>().Move(new Vector3(0, (Mathf.Sin(Time.time * speed) * floatStrength) * heightMod, 0)); 
     }

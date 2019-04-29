@@ -9,14 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e62b0a59106fa04b9430354e4ff4b8a, type: 3}
-  m_Name: Player Variables
+  m_Script: {fileID: 11500000, guid: 8da64a402a612914ba523f202da625e8, type: 3}
+  m_Name: TimerVariables
   m_EditorClassIdentifier: 
-  speed: 9
-  turnSpeed: 0.6
-  jumpSpeed: 0.61
-  gravity: 2
-  timeAirStall: 0.1
-  movementInAirPercentage: 0.7
-  stepGravity: 0.02
-  stepLift: 0.25
+  gameDays: 3
+  dayLength: 900
+  dayTimeAmount: 0.6
+  eventInterval: 0.05

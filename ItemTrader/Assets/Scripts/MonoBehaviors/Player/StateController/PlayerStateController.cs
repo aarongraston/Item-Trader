@@ -15,11 +15,12 @@ public class PlayerStateController : MonoBehaviour
     [HideInInspector] public GameObject talkingTo;
 
     public ItemObject item;
+    public GameObject itemRep;
     public PlayerVariables variables;
     public GameObject boat;
     public GameObject itemPosition;
 
-    
+    private Animator charAnimator;
 
     //private variables
     private ButtonPressed bPressed = ButtonPressed.Nothing;
@@ -29,7 +30,6 @@ public class PlayerStateController : MonoBehaviour
     {
         Init();
         airTime = variables.timeAirStall;
-
     }
 
     private void Init()
@@ -38,6 +38,7 @@ public class PlayerStateController : MonoBehaviour
 
         //if you want to change the state the player loads into at the start of the game (you will most likely for the sake of an intro), here is where to do it:
         currentState = (State)AssetDatabase.LoadAssetAtPath("Assets/Scripts/ScriptableObjects/PlayerStateMachine/State/PlayerMoveState.asset", typeof(State));
+        charAnimator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -100,11 +101,20 @@ public class PlayerStateController : MonoBehaviour
         return closest;
     }
 
-    public void SetAndHoldItem(ItemObject itemToHold)
+    public void SetHoldingItem(ItemObject itemToHold)
     {
+        if (item.itemName != "No Item") {
+            Debug.Log("gets bumped here");
+            itemRep.GetComponent<Item>().Bump();
+        }
+
         item = itemToHold;
-        GetComponentInChildren<Animator>().SetBool("holdingItem", true);
-        Instantiate(item.item, itemPosition.transform.position, Quaternion.identity, itemPosition.transform);
+        charAnimator.SetBool("holdingItem", true);
+        charAnimator.SetLayerWeight(1, 1);
+    }
+
+    public void endConversation() {
+        talkingTo.GetComponent<Character>().instanceItem(this);
     }
 
     public void destroyCurrentItem()
