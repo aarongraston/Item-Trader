@@ -24,44 +24,56 @@ public class Item : MonoBehaviour
     }
 
     public void moveToPlayer(Vector3 originalSize) {
-        Debug.Log("got in");
         Transform playerItemPos = GameObject.FindGameObjectWithTag("Player").transform.FindDeepChild("ItemPosition");
-        StartCoroutine(Movement(playerItemPos, originalSize, itemVars.timePercentage));
+        StartCoroutine(PickUpItem(playerItemPos, itemVars.timePercentage));
     }
 
     //this will move the item to the players hands, called indirectly from the moveToPlayer method
 
-    private IEnumerator Movement(Transform destination, Vector3 originalSize, float speed) {
+    private IEnumerator PickUpItem(Transform destination, float speed) {
 
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateController>().SetHoldingItem(
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateController>().talkingTo.GetComponent<Character>().currentDialogue.itemToGive);
+
+        transform.position = SetPlayerItem().position;
+        transform.localPosition = transform.localPosition + new Vector3( 
+            0,
+            itemVars.spawnHeightOffset, 
+            0);
+       
         Vector3 startPos = this.transform.position;
         Transform itemDest = destination;
-        Vector3 sizeTarget = originalSize;
         Vector3 currentSize = this.transform.localScale;
 
         float timePassed = 0f;
-
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateController>().SetHoldingItem(
-    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateController>().talkingTo.GetComponent<Character>().currentDialogue.itemToGive);
 
         while (transform.position != itemDest.position) {
             timePassed += Time.deltaTime * speed;
 
             transform.position = Vector3.Lerp(startPos, itemDest.position, timePassed);
-            transform.localScale = Vector3.Lerp(currentSize, sizeTarget, timePassed);
             yield return null;
         }
 
-        Transform playerParent = GameObject.FindGameObjectWithTag("Player").transform.FindDeepChild("ItemPosition");
+        rb.isKinematic = true;
+        rb.useGravity = false;
+    }
 
+    public Transform SetPlayerItem() {
+        Transform playerParent = GameObject.FindGameObjectWithTag("Player").transform.FindDeepChild("ItemPosition");
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateController>().itemRep = gameObject;
-        this.transform.SetParent(playerParent);
+        transform.SetParent(playerParent);
+        return playerParent;
     }
 
     //for bumping the item from the player's hands
 
     public void Bump() {
 
+        this.enabled = false;
         transform.parent = null;
+        transform.position = GameObject.FindGameObjectWithTag("Player").transform.FindDeepChild("ItemDischarge").position;
+
+        this.enabled = true;
         rb = gameObject.GetComponent<Rigidbody>();
         rb.isKinematic = false;
         rb.useGravity = true;

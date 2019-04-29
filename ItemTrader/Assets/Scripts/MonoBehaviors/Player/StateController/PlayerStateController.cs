@@ -104,6 +104,7 @@ public class PlayerStateController : MonoBehaviour
     public void SetHoldingItem(ItemObject itemToHold)
     {
         if (item.itemName != "No Item") {
+            Debug.Log("gets bumped here");
             itemRep.GetComponent<Item>().Bump();
         }
 
