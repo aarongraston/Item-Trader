@@ -8,5 +8,6 @@ public class DialogueObject : ScriptableObject
     public string[] Dialogue;
     public ItemObject conditionalItem;
     public ItemObject itemToGive;
+    public int pointValue;
     
 }

@@ -9,6 +9,8 @@ public class Character : MonoBehaviour
     public DialogueObject[] dialogue;
     public DialogueObject currentDialogue;
 
+    public GameObject gameManager;
+
     public GameObject itemStartPos;
 
     public bool LookForItem(ItemObject item)
@@ -66,7 +68,10 @@ public class Character : MonoBehaviour
 
     public void instanceItem(PlayerStateController pc) {
 
+        Points pointManager = gameManager.GetComponent<Points>();
+
         GameObject item = Instantiate(currentDialogue.itemToGive.item, itemStartPos.transform.position, Quaternion.identity, itemStartPos.transform);
+        pointManager.AddPoints(currentDialogue.pointValue);
         Vector3 originalSize = item.transform.localScale;
 
         

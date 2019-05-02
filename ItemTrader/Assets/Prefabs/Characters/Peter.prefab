@@ -170,10 +170,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInRange: 0
-  nullDialogue: {fileID: 11400000, guid: 2a219e64c43ae7449b45c6052960f320, type: 2}
+  nullDialogue: {fileID: 11400000, guid: 62b3c238f6efcfc44bb6e8ab007d9504, type: 2}
   dialogue:
-  - {fileID: 11400000, guid: 8b946bb43fc1c664988c4b1f9a0b7502, type: 2}
+  - {fileID: 11400000, guid: 62b3c238f6efcfc44bb6e8ab007d9504, type: 2}
   currentDialogue: {fileID: 0}
+  gameManager: {fileID: 0}
   itemStartPos: {fileID: 1018807157302769225}
 --- !u!54 &1870783874884880370
 Rigidbody:
