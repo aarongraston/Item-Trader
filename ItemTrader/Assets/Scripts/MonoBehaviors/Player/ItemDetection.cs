@@ -91,19 +91,37 @@ public class ItemDetection : MonoBehaviour
     }
 
     private IEnumerator FocusBubbleHandler(GameObject o) {
+
         
         yield return new WaitForSeconds(0.15f);
 
-        //destroy all previous focus bubbles
-        GameObject[] objectsToDestroy = GameObject.FindGameObjectsWithTag("bubble");
+        CharacterVariables charVars = null;
+
+    //destroy all previous focus bubbles
+    GameObject[] objectsToDestroy = GameObject.FindGameObjectsWithTag("bubble");
         foreach (GameObject obj in objectsToDestroy) {
             Destroy(obj);
         }
+        //get the variables specific to this object:
+        if (o.GetComponent<Character>()) {
+            charVars = o.GetComponent<Character>().charVariables;
+        }
+        GameObject bubbleInstance;
 
-        GameObject bubbleInstance = Instantiate(
-            bubble, 
-            o.transform.position + new Vector3(0, o.transform.localScale.y / 2, 0), 
+        if (charVars != null)
+        {
+            bubbleInstance = Instantiate(
+            bubble,
+            o.transform.position + new Vector3(0, o.transform.localScale.y / 2 + charVars.focusBubbleHeight, 0),
             o.transform.rotation, o.transform);
+        }
+        else
+        {
+            bubbleInstance = Instantiate(
+                bubble,
+                o.transform.position + new Vector3(0, o.transform.localScale.y / 2, 0),
+                o.transform.rotation, o.transform);
+        }
 
         Vector3 originalSize = bubbleInstance.transform.localScale;
         Vector3 originalPos = bubbleInstance.transform.position;

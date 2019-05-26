@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1860005391}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.70710677}
+  m_LocalRotation: {x: 0.27059805, y: -0.27059802, z: 0.65328157, w: 0.65328145}
   m_LocalPosition: {x: -4.52, y: 5.67, z: 0.39}
-  m_LocalScale: {x: 0.42079, y: 0.42079, z: 0.18970841}
+  m_LocalScale: {x: 0.35113743, y: 0.35113743, z: 0.15830635}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.00001}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 90.00001}
 --- !u!33 &1860005394
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -51,7 +51,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1860005391}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2471f7bd91062ac45a1ef3afeff4c913, type: 3}
+  - {fileID: 2100000, guid: f058a7e4885be0844b6b12fa8c0ed698, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,7 +110,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9498559, y: 1.9999999, z: 1.9999999}
+  m_Size: {x: 3.21, y: 4.16, z: 6.86}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1860005396
 MonoBehaviour:
@@ -125,4 +125,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinVars: {fileID: 11400000, guid: e2dfe3bb0e5204b418af708f66d19da8, type: 2}
-  gameManager: {fileID: 0}

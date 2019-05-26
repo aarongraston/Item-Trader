@@ -21,6 +21,8 @@ public class InteractAction : InputAction
         if (character.GetComponent<Character>().CheckTrigger() && itemDetection.currentFocus.gameObject.tag == "character")
         {
             character.GetComponent<Character>().LookForItem(controller.item);
+
+            //set whether to give an item here.
             controller.talkingTo = character;
             character.GetComponent<Character>().ExecuteDialogue(0);
             DialogueManager dManager = controller.talkingTo.GetComponent<DialogueManager>();

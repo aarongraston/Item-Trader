@@ -9,9 +9,13 @@ public class Character : MonoBehaviour
     public DialogueObject[] dialogue;
     public DialogueObject currentDialogue;
 
+    public CharacterVariables charVariables;
+
     public GameObject gameManager;
 
     public GameObject itemStartPos;
+
+    public bool itemToGive = false;
 
     public bool LookForItem(ItemObject item)
     {
@@ -22,11 +26,13 @@ public class Character : MonoBehaviour
             if (d.conditionalItem == item)
             {
                 currentDialogue = d;
+                itemToGive = true;
                 return true;
             }
         }
 
         currentDialogue = nullDialogue;
+        itemToGive = false;
         return false;
         
 

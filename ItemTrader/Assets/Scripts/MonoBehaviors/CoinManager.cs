@@ -54,13 +54,12 @@ public class CoinManager : MonoBehaviour
 
     private IEnumerator CoinsJump()
     {
-
         Vector3 velocity = Vector3.zero;
-        float sleepThreshold = 0.05f;
-        float bounceCooef = 0.6f;
-        float gravity = -60f;
+        float sleepThreshold = 0.5f;
+        float bounceCooef = 0.4f;
+        float gravity = -80f;
 
-        velocity.y = 20f;
+        velocity.y = 25f;
 
         while (velocity.magnitude > sleepThreshold || coinDisplayMover.anchoredPosition.y > floorHeight)
         {
@@ -75,6 +74,8 @@ public class CoinManager : MonoBehaviour
             }
             yield return null;
         }
+
+        Debug.Log("made it out");
     }
 
 

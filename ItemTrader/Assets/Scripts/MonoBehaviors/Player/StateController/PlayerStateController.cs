@@ -113,8 +113,12 @@ public class PlayerStateController : MonoBehaviour
         charAnimator.SetLayerWeight(1, 1);
     }
 
-    public void endConversation() {
-        talkingTo.GetComponent<Character>().instanceItem(this);
+    public void endConversation(bool give) {
+        if (give)
+        {
+            talkingTo.GetComponent<Character>().instanceItem(this);
+        }
+        return;
     }
 
     public void destroyCurrentItem()

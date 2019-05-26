@@ -54,11 +54,11 @@ public class Points : MonoBehaviour
     private IEnumerator PointsJump() {
 
         Vector3 velocity = Vector3.zero;
-        float sleepThreshold = 0.05f;
-        float bounceCooef = 0.6f;
-        float gravity = -60f;
+        float sleepThreshold = 0.7f;
+        float bounceCooef = 0.4f;
+        float gravity = -80f;
 
-        velocity.y = 20f;
+        velocity.y = 25f;
 
         while (velocity.magnitude > sleepThreshold || pointDisplayMover.anchoredPosition.y > floorHeight)
         {
