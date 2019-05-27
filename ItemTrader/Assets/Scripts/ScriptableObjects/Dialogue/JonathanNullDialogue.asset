@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: JonathanNullDialogue
   m_EditorClassIdentifier: 
   Dialogue:
-  - Dude. Why would you bring me nothing?
-  - I'm your kin.
+  - stop.
   conditionalItem: {fileID: 11400000, guid: b3ae3a8199b8b374f8949ee970e827d4, type: 2}
   itemToGive: {fileID: 0}
   pointValue: -50

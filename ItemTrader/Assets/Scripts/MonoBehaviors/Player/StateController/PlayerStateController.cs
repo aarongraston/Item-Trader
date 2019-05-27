@@ -20,7 +20,7 @@ public class PlayerStateController : MonoBehaviour
     public GameObject boat;
     public GameObject itemPosition;
 
-    private Animator charAnimator;
+    public Animator charAnimator;
 
     //private variables
     private ButtonPressed bPressed = ButtonPressed.Nothing;
@@ -55,7 +55,7 @@ public class PlayerStateController : MonoBehaviour
             bPressed = ButtonPressed.E;
 
             if (boat.GetComponent<CheckandLoadPlayer>().playerIsInTrigger)
-            {      
+            {
                 currentState.DoAction(this, bPressed, boat);
                 return;
             }

@@ -55,6 +55,8 @@ public class CheckandLoadPlayer : MonoBehaviour
             player.GetComponent<CharacterController>().enabled = false; 
             playerPos = transform.GetChild(0).transform;
             player.transform.position = playerPos.position;
+            player.transform.rotation = transform.rotation * Quaternion.Euler(90, 0, 0);
+            player.transform.rotation = player.transform.rotation * Quaternion.Euler(0, -90, 0);
 
             //
 

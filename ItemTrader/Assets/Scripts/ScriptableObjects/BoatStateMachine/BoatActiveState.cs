@@ -21,12 +21,12 @@ public class BoatActiveState : BoatStateUpdateMethod
        movement.y = 0 + Mathf.Sin(Time.time * controller.variables.floatSpeed) * controller.variables.floatStrength;
 
         controller.charController.Move(movement);
-
+           
         if (movement.x != 0 || movement.z != 0)
         {
-            controller.transform.rotation = Quaternion.Slerp(controller.transform.rotation, Quaternion.LookRotation(movementKeys), controller.variables.turnSpeed);
+            controller.transform.rotation = Quaternion.Slerp(controller.transform.rotation, Quaternion.LookRotation(movementKeys) * Quaternion.Euler(-90, 0, 90), controller.variables.turnSpeed);
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateController>().transform.rotation =
-                Quaternion.Slerp(controller.transform.rotation, Quaternion.LookRotation(movementKeys), controller.variables.turnSpeed);
+                Quaternion.Slerp(GameObject.FindGameObjectWithTag("Player").transform.rotation, Quaternion.LookRotation(movementKeys), controller.variables.turnSpeed);
         }
 
 

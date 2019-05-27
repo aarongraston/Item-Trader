@@ -20,6 +20,7 @@ public class InteractAction : InputAction
 
         if (character.GetComponent<Character>().CheckTrigger() && itemDetection.currentFocus.gameObject.tag == "character")
         {
+            controller.charAnimator.SetBool("running", false);
             character.GetComponent<Character>().LookForItem(controller.item);
 
             //set whether to give an item here.
@@ -47,8 +48,9 @@ public class InteractAction : InputAction
             return;
         }
 
-        if (controller.currentState == AssetDatabase.LoadAssetAtPath("Assets/Scripts/ScriptableObjects/PlayerStateMachine/State/PlayerBoatState.asset", typeof(ScriptableObject)) && 
+        if (controller.currentState == AssetDatabase.LoadAssetAtPath("Assets/Scripts/ScriptableObjects/PlayerStateMachine/State/PlayerBoatState.asset", typeof(ScriptableObject)) &&
             boat.GetComponent<CheckandLoadPlayer>().boatIsNearDock)
+            controller.charAnimator.SetBool("inBoat", false);
         boatUncall(controller, boat);
 
     }
@@ -64,6 +66,7 @@ public class InteractAction : InputAction
 
         if (hit.transform.gameObject == theDock)
         {
+            controller.charAnimator.SetBool("inBoat", true);
             controller.currentState = boatState;
             boat.GetComponent<CheckandLoadPlayer>().LoadPlayer();
         }
