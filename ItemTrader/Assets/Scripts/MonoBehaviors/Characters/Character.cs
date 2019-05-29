@@ -5,7 +5,6 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public bool playerInRange = false;
-    public DialogueObject nullDialogue;
     public DialogueObject[] dialogue;
     public DialogueObject currentDialogue;
 
@@ -26,13 +25,20 @@ public class Character : MonoBehaviour
             if (d.conditionalItem == item)
             {
                 currentDialogue = d;
-                itemToGive = true;
+                if (d.itemToGive.itemName == "No Item")
+                {
+                    Debug.Log("made it here");
+                    itemToGive = false;
+                }
+                else
+                {
+                    itemToGive = true;
+                }
                 return true;
             }
         }
 
-        currentDialogue = nullDialogue;
-        itemToGive = false;
+        Debug.Log("This means you need to set a dialogue for this item");
         return false;
         
 
@@ -76,12 +82,23 @@ public class Character : MonoBehaviour
 
         Points pointManager = gameManager.GetComponent<Points>();
 
-        GameObject item = Instantiate(currentDialogue.itemToGive.item, itemStartPos.transform.position, Quaternion.identity, itemStartPos.transform);
-        pointManager.AddPoints(currentDialogue.pointValue);
-        Vector3 originalSize = item.transform.localScale;
+        if (!itemToGive)
+        {
+            Debug.Log("Nothing to give!");
+            return;
+        }
+        else
+        {
+            Debug.Log("Something here!");
+            GameObject item = Instantiate(currentDialogue.itemToGive.item, itemStartPos.transform.position, Quaternion.identity, itemStartPos.transform);
+            pc.SetHoldingItem(currentDialogue.itemToGive);
+            pointManager.AddPoints(currentDialogue.pointValue);
+            Vector3 originalSize = item.transform.localScale;
+            item.GetComponent<Item>().moveToPlayer(originalSize);
+        }
 
         
-        item.GetComponent<Item>().moveToPlayer(originalSize);
+        
 
     }
 

@@ -32,9 +32,6 @@ public class Item : MonoBehaviour
 
     private IEnumerator PickUpItem(Transform destination, float speed) {
 
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateController>().SetHoldingItem(
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateController>().talkingTo.GetComponent<Character>().currentDialogue.itemToGive);
-
         transform.position = SetPlayerItem().position;
         transform.localPosition = transform.localPosition + new Vector3( 
             0,

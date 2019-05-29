@@ -21,21 +21,32 @@ public class InteractAction : InputAction
         if (character.GetComponent<Character>().CheckTrigger() && itemDetection.currentFocus.gameObject.tag == "character")
         {
             controller.charAnimator.SetBool("running", false);
-            character.GetComponent<Character>().LookForItem(controller.item);
+            if (character.GetComponent<Character>().LookForItem(controller.item))
+            {
+                //set the camera to zoom
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<DialogueListener>().Zoom(true);
+                controller.talkingTo = character;
+                character.GetComponent<Character>().ExecuteDialogue(0);
+                DialogueManager dManager = controller.talkingTo.GetComponent<DialogueManager>();
+                dManager.EnableCanvas();
+                controller.pointInDialogue++;
+                controller.currentState = talkState;
+            }
 
-            //set whether to give an item here.
-            controller.talkingTo = character;
-            character.GetComponent<Character>().ExecuteDialogue(0);
-            DialogueManager dManager = controller.talkingTo.GetComponent<DialogueManager>();
-            dManager.EnableCanvas();
-            controller.pointInDialogue++;
-            controller.currentState = talkState;
+    
+            
         }
 
         //here if the object of focus is an item
 
-        else if (itemDetection.currentFocus.gameObject.layer == 9) {
+        else if (itemDetection.currentFocus.gameObject.layer == 9)
+        {
             itemDetection.currentFocus.GetComponent<Item>().moveToPlayer(new Vector3(1, 1, 1));
+        }
+
+        else if (controller.item != null) {
+            controller.itemRep.GetComponent<Item>().Bump();
+            controller.item = null;
         }
     }
 

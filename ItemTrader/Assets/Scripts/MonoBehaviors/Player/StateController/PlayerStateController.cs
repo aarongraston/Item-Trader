@@ -64,9 +64,7 @@ public class PlayerStateController : MonoBehaviour
         }
 
         currentState.UpdateState(this);
-
     }
-
     public void FixedUpdate()
     {
         //currentState.UpdateState(this);
@@ -75,7 +73,7 @@ public class PlayerStateController : MonoBehaviour
     //a method that returns the raycast hit of what the player is standing on
     public void StandingOn(out RaycastHit returnHit)
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out returnHit, 5f))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out returnHit, 20f))
         {
             return;
         }
@@ -103,21 +101,40 @@ public class PlayerStateController : MonoBehaviour
 
     public void SetHoldingItem(ItemObject itemToHold)
     {
-        if (item.itemName != "No Item") {
-            Debug.Log("gets bumped here");
-            itemRep.GetComponent<Item>().Bump();
+        if (itemToHold.itemName == "No Item") {
+            Debug.Log("No Item to give");
         }
 
-        item = itemToHold;
-        charAnimator.SetBool("holdingItem", true);
-        charAnimator.SetLayerWeight(1, 1);
+        else if (itemToHold.itemName != "No Item") {
+            Debug.Log("gets bumped here");
+            if (itemRep != null)
+            {
+                itemRep.GetComponent<Item>().Bump();
+                itemRep = itemToHold.item;
+                item = itemToHold;
+                charAnimator.SetBool("holdingItem", true);
+                charAnimator.SetLayerWeight(1, 1);
+            }
+            else {
+                return;
+            }
+        }       
+        
+        
     }
 
     public void endConversation(bool give) {
+
+        pointInDialogue = 0;
+
         if (give)
         {
+            Debug.Log("Made it here.");
             talkingTo.GetComponent<Character>().instanceItem(this);
         }
+
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<DialogueListener>().Zoom(false);
+
         return;
     }
 

@@ -16,6 +16,6 @@ MonoBehaviour:
   - ooh
   - 'thank you for visiting me! '
   - It's so lonely on this rectangle.
-  conditionalItem: {fileID: 11400000, guid: bfd064a3d0271994b904544f7c37be25, type: 2}
+  conditionalItem: {fileID: 11400000, guid: b3ae3a8199b8b374f8949ee970e827d4, type: 2}
   itemToGive: {fileID: 11400000, guid: a4cb6ef68042aca468bc28b8597f102c, type: 2}
   pointValue: 300

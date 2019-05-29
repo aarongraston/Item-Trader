@@ -13,12 +13,14 @@ public class TalkAction : InputAction
     {
         talking = controller.talkingTo.GetComponent<Character>().ExecuteDialogue(controller.pointInDialogue);
         controller.pointInDialogue++;
+
         if (talking == false)
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             controller.pointInDialogue = 0;
 
             if (controller.talkingTo.GetComponent<Character>().itemToGive) {
+                Debug.Log("There's an item to give!");
                 itemToGive = true;
             }
             //controller.destroyCurrentItem();
