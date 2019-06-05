@@ -41,12 +41,13 @@ public class InteractAction : InputAction
 
         else if (itemDetection.currentFocus.gameObject.layer == 9)
         {
+            controller.itemRep.GetComponent<Item>().Bump();
             itemDetection.currentFocus.GetComponent<Item>().moveToPlayer(new Vector3(1, 1, 1));
         }
 
         else if (controller.item != null) {
             controller.itemRep.GetComponent<Item>().Bump();
-            controller.item = null;
+            controller.ResetItem();
         }
     }
 

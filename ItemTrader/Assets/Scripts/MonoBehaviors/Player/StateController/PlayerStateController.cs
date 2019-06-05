@@ -14,6 +14,8 @@ public class PlayerStateController : MonoBehaviour
     [HideInInspector] public int pointInDialogue = 0;
     [HideInInspector] public GameObject talkingTo;
 
+    public ItemObject noItem;
+
     public ItemObject item;
     public GameObject itemRep;
     public PlayerVariables variables;
@@ -110,14 +112,14 @@ public class PlayerStateController : MonoBehaviour
             if (itemRep != null)
             {
                 itemRep.GetComponent<Item>().Bump();
-                itemRep = itemToHold.item;
-                item = itemToHold;
-                charAnimator.SetBool("holdingItem", true);
-                charAnimator.SetLayerWeight(1, 1);
+                
             }
-            else {
-                return;
-            }
+
+            itemRep = itemToHold.item;
+            item = itemToHold;
+            charAnimator.SetBool("holdingItem", true);
+            charAnimator.SetLayerWeight(1, 1);
+            
         }       
         
         
@@ -145,6 +147,10 @@ public class PlayerStateController : MonoBehaviour
             Destroy(itemPosition.transform.GetChild(0).gameObject);
         }
             
+    }
+
+    public void ResetItem() {
+        item = noItem; 
     }
 
     public void ChangeAnimator(State state)
